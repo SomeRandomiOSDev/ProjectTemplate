@@ -1,5 +1,5 @@
 name: Xcode Project
-on: push
+on: [push, workflow_dispatch]
 
 jobs:
   ios:
