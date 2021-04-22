@@ -1,0 +1,6 @@
+<#TemplateProject#>.xcodeproj/project.xcworkspace
+<#TemplateProject#>.xcodeproj/xcuserdata
+
+.build
+.swiftpm
+scripts/build
