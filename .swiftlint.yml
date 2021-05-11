@@ -61,10 +61,4 @@ reporter: "xcode"
 
 identifier_name:
   excluded:
-    - r
-    - g
-    - b
-    - a
     - i
-    - _range
-    - _result
