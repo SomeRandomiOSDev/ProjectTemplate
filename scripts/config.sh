@@ -3,6 +3,13 @@
 # config.sh
 # Usage example: ./config.sh -name <project_name> [-test] [-verbose]
 
+# Help
+
+function print_help() {
+    echo "./config.sh -name <project_name> [-help] [-test] [-verbose]"
+    exit 1
+}
+
 # Parse Arguments
 
 while [[ $# -gt 0 ]]; do
@@ -11,6 +18,10 @@ while [[ $# -gt 0 ]]; do
         PROJECT_NAME="$2"
         shift # -name
         shift # <project_name>
+        ;;
+
+        -help)
+        print_help
         ;;
 
         -test)
@@ -26,15 +37,13 @@ while [[ $# -gt 0 ]]; do
 
         *)
         echo "Unknown argument: $1"
-        echo "./config.sh -name <project_name> [-test] [-verbose]"
-        exit 1
+        print_help
     esac
 done
 
 if [ -z ${PROJECT_NAME+x} ]; then
     echo "Missing `-name` argument"
-    echo "./config.sh -name <project_name> [-test] [-verbose]"
-    exit 1
+    print_help
 fi
 
 # Set Script Variables
