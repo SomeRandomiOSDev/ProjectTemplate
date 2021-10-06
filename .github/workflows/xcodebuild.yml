@@ -20,7 +20,7 @@ jobs:
 
     - name: Test
       run: |
-        xcodebuild -project <#TemplateProject#>.xcodeproj -scheme "<#TemplateProject#>" -destination "platform=iOS Simulator,name=iPhone 12 Pro Max" -configuration Debug ONLY_ACTIVE_ARCH=YES test
+        xcodebuild -project <#TemplateProject#>.xcodeproj -scheme "<#TemplateProject#>" -testPlan "<#TemplateProject#>Tests" -destination "platform=iOS Simulator,name=iPhone 12 Pro Max" -configuration Debug ONLY_ACTIVE_ARCH=YES test
 
   maccatalyst:
     name: Mac Catalyst
@@ -36,7 +36,7 @@ jobs:
 
     - name: Test
       run: |
-        xcodebuild -project <#TemplateProject#>.xcodeproj -scheme "<#TemplateProject#>" -destination "platform=macOS,variant=Mac Catalyst" -configuration Debug ONLY_ACTIVE_ARCH=YES test
+        xcodebuild -project <#TemplateProject#>.xcodeproj -scheme "<#TemplateProject#>" -testPlan "<#TemplateProject#>Tests" -destination "platform=macOS,variant=Mac Catalyst" -configuration Debug ONLY_ACTIVE_ARCH=YES test
 
   macos:
     name: macOS
@@ -52,7 +52,7 @@ jobs:
 
     - name: Test
       run: |
-        xcodebuild -project <#TemplateProject#>.xcodeproj -scheme "<#TemplateProject#> macOS" -configuration Debug test
+        xcodebuild -project <#TemplateProject#>.xcodeproj -scheme "<#TemplateProject#> macOS" -testPlan "<#TemplateProject#> macOS Tests" -configuration Debug ONLY_ACTIVE_ARCH=YES test
 
   tvos:
     name: tvOS
@@ -72,7 +72,7 @@ jobs:
 
     - name: Test
       run: |
-        xcodebuild -project <#TemplateProject#>.xcodeproj -scheme "<#TemplateProject#> tvOS" -destination "platform=tvOS Simulator,name=Apple TV 4K" -configuration Debug ONLY_ACTIVE_ARCH=YES test
+        xcodebuild -project <#TemplateProject#>.xcodeproj -scheme "<#TemplateProject#> tvOS" -testPlan "<#TemplateProject#> tvOS Tests" -destination "platform=tvOS Simulator,name=Apple TV 4K" -configuration Debug ONLY_ACTIVE_ARCH=YES test
 
   watchos:
     name: watchOS
@@ -89,3 +89,7 @@ jobs:
     - name: Build watchOS Simulator
       run: |
         xcodebuild -project <#TemplateProject#>.xcodeproj -scheme "<#TemplateProject#> watchOS" -destination "generic/platform=watchOS Simulator" -configuration Debug
+
+    - name: Test
+      run: |
+        xcodebuild -project <#TemplateProject#>.xcodeproj -scheme "<#TemplateProject#> watchOS" -testPlan "<#TemplateProject#> watchOS Tests" -destination "platform=watchOS Simulator,name=Apple Watch Series 6 - 44mm" -configuration Debug ONLY_ACTIVE_ARCH=YES test

@@ -71,7 +71,7 @@ function setup_git() {
         local PWD="$(pwd)"
         cd "$1"
 
-        git init --quiet
+        git init --quiet --initial-branch=main
         cd "$PWD"
 
         # Local Git Options
