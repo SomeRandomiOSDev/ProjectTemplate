@@ -16,15 +16,15 @@
       <CodeCoverageTargets>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DD86D56F23D11C860046E63E"
+            BlueprintIdentifier = "DD86D5C323D11D140046E63E"
             BuildableName = "<#TemplateProject#>.framework"
-            BlueprintName = "<#TemplateProject#> macOS"
+            BlueprintName = "<#TemplateProject#> watchOS"
             ReferencedContainer = "container:<#TemplateProject#>.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
       <TestPlans>
          <TestPlanReference
-            reference = "container:Tests/Test Plans/<#TemplateProject#> macOS Tests.xctestplan"
+            reference = "container:Tests/Test Plans/<#TemplateProject#> watchOS Tests.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
@@ -33,9 +33,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DD86D57723D11C860046E63E"
+               BlueprintIdentifier = "DD48BC93270E0DE800D842BC"
                BuildableName = "<#TemplateProject#>Tests.xctest"
-               BlueprintName = "<#TemplateProject#> macOS Tests"
+               BlueprintName = "<#TemplateProject#> watchOS Tests"
                ReferencedContainer = "container:<#TemplateProject#>.xcodeproj">
             </BuildableReference>
          </TestableReference>

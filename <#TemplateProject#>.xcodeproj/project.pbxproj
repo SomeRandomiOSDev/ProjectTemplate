@@ -35,6 +35,7 @@
 		DD86D54723D11B3E0046E63E /* <#TemplateProject#>.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD86D53D23D11B3E0046E63E /* <#TemplateProject#>.framework */; };
 		DD86D57923D11C860046E63E /* <#TemplateProject#>.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD86D57023D11C860046E63E /* <#TemplateProject#>.framework */; };
 		DD86D59523D11CA00046E63E /* <#TemplateProject#>.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD86D58C23D11CA00046E63E /* <#TemplateProject#>.framework */; };
+        DD48BC98270E0DE800D842BC /* <#TemplateProject#>.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD86D5C423D11D140046E63E /* <#TemplateProject#>.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,13 +45,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = DD86D53C23D11B3E0046E63E;
 			remoteInfo = <#TemplateProject#>;
-		};
-		DD86D56923D11C6C0046E63E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DD86D53423D11B3E0046E63E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DD86D56423D11C4B0046E63E;
-			remoteInfo = "Run SwiftLint";
 		};
 		DD86D57A23D11C860046E63E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -66,6 +60,20 @@
 			remoteGlobalIDString = DD86D58B23D11CA00046E63E;
 			remoteInfo = "<#TemplateProject#> tvOS";
 		};
+        DD48BC99270E0DE800D842BC /* PBXContainerItemProxy */ = {
+            isa = PBXContainerItemProxy;
+            containerPortal = DD86D53423D11B3E0046E63E /* Project object */;
+            proxyType = 1;
+            remoteGlobalIDString = DD86D5C323D11D140046E63E;
+            remoteInfo = "<#TemplateProject#> watchOS";
+        };
+        DD86D56923D11C6C0046E63E /* PBXContainerItemProxy */ = {
+            isa = PBXContainerItemProxy;
+            containerPortal = DD86D53423D11B3E0046E63E /* Project object */;
+            proxyType = 1;
+            remoteGlobalIDString = DD86D56423D11C4B0046E63E;
+            remoteInfo = "Run SwiftLint";
+        };
 		DD86D5D823D11DC60046E63E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DD86D53423D11B3E0046E63E /* Project object */;
@@ -101,6 +109,11 @@
 		DD86D58C23D11CA00046E63E /* <#TemplateProject#>.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = <#TemplateProject#>.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD86D59423D11CA00046E63E /* <#TemplateProject#>Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = <#TemplateProject#>Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD86D5C423D11D140046E63E /* <#TemplateProject#>.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = <#TemplateProject#>.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+        DD48BC94270E0DE800D842BC /* <#TemplateProject#>Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = <#TemplateProject#>Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+        DD48BC9F270E0F4500D842BC /* <#TemplateProject#>Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = <#TemplateProject#>Tests.xctestplan; sourceTree = "<group>"; };
+        DD48BCA0270E0F9A00D842BC /* <#TemplateProject#> macOS Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "<#TemplateProject#> macOS Tests.xctestplan"; sourceTree = "<group>"; };
+        DD48BCA1270E0FE200D842BC /* <#TemplateProject#> tvOS Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "<#TemplateProject#> tvOS Tests.xctestplan"; sourceTree = "<group>"; };
+        DD48BCA2270E101D00D842BC /* <#TemplateProject#> watchOS Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "<#TemplateProject#> watchOS Tests.xctestplan"; sourceTree = "<group>"; };
 		DD86D5DE23D22DB90046E63E /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
 		DD86D5DF23D22DB90046E63E /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = SOURCE_ROOT; };
 		DD86D5E023D22DB90046E63E /* <#TemplateProject#>.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = <#TemplateProject#>.podspec; sourceTree = SOURCE_ROOT; };
@@ -162,9 +175,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+        DD48BC91270E0DE800D842BC /* Frameworks */ = {
+            isa = PBXFrameworksBuildPhase;
+            buildActionMask = 2147483647;
+            files = (
+                DD48BC98270E0DE800D842BC /* <#TemplateProject#>.framework in Frameworks */,
+            );
+            runOnlyForDeploymentPostprocessing = 0;
+        };
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+        DD48BC9E270E0F1300D842BC /* Test Plans */ = {
+            isa = PBXGroup;
+            children = (
+                DD48BC9F270E0F4500D842BC /* <#TemplateProject#>Tests.xctestplan */,
+                DD48BCA0270E0F9A00D842BC /* <#TemplateProject#> macOS Tests.xctestplan */,
+                DD48BCA1270E0FE200D842BC /* <#TemplateProject#> tvOS Tests.xctestplan */,
+                DD48BCA2270E101D00D842BC /* <#TemplateProject#> watchOS Tests.xctestplan */,
+            );
+            path = "Test Plans";
+            sourceTree = "<group>";
+        };
         DD5D04E52621361600BA0FC2 /* <#TemplateProject#> */ = {
             isa = PBXGroup;
             children = (
@@ -197,6 +229,7 @@
 				DD86D58C23D11CA00046E63E /* <#TemplateProject#>.framework */,
 				DD86D59423D11CA00046E63E /* <#TemplateProject#>Tests.xctest */,
 				DD86D5C423D11D140046E63E /* <#TemplateProject#>.framework */,
+                DD48BC94270E0DE800D842BC /* <#TemplateProject#>Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -240,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
                 DD5D04F22621362400BA0FC2 /* <#TemplateProject#>Tests */,
+                DD48BC9E270E0F1300D842BC /* Test Plans */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -408,49 +442,74 @@
 			productReference = DD86D5C423D11D140046E63E /* <#TemplateProject#>.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+        DD48BC93270E0DE800D842BC /* <#TemplateProject#> watchOS Tests */ = {
+            isa = PBXNativeTarget;
+            buildConfigurationList = DD48BC9D270E0DE800D842BC /* Build configuration list for PBXNativeTarget "<#TemplateProject#> watchOS Tests" */;
+            buildPhases = (
+                DD48BC90270E0DE800D842BC /* Sources */,
+                DD48BC91270E0DE800D842BC /* Frameworks */,
+                DD48BC92270E0DE800D842BC /* Resources */,
+            );
+            buildRules = (
+            );
+            dependencies = (
+                DD48BC9A270E0DE800D842BC /* PBXTargetDependency */,
+            );
+            name = "<#TemplateProject#> watchOS Tests";
+            productName = "<#TemplateProject#> watchOS Tests";
+            productReference = DD48BC94270E0DE800D842BC /* <#TemplateProject#>Tests.xctest */;
+            productType = "com.apple.product-type.bundle.unit-test";
+        };
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		DD86D53423D11B3E0046E63E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1240;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = <#TemplateUsername#>;
 				TargetAttributes = {
-                    DD2FBC27258BE8BB00DB3211 = {
-                        CreatedOnToolsVersion = 12.4;
-                    };
 					DD86D53C23D11B3E0046E63E = {
-						CreatedOnToolsVersion = 12.4;
-						LastSwiftMigration = 1130;
+						CreatedOnToolsVersion = 13.0;
+                        LastSwiftMigration = 1300;
 					};
 					DD86D54523D11B3E0046E63E = {
-						CreatedOnToolsVersion = 12.4;
-					};
-					DD86D56423D11C4B0046E63E = {
-						CreatedOnToolsVersion = 12.4;
+						CreatedOnToolsVersion = 13.0;
+                        LastSwiftMigration = 1300;
 					};
 					DD86D56F23D11C860046E63E = {
-						CreatedOnToolsVersion = 12.4;
-						LastSwiftMigration = 1130;
+						CreatedOnToolsVersion = 13.0;
+                        LastSwiftMigration = 1300;
 					};
 					DD86D57723D11C860046E63E = {
-						CreatedOnToolsVersion = 12.4;
-						LastSwiftMigration = 1130;
+						CreatedOnToolsVersion = 13.0;
+                        LastSwiftMigration = 1300;
 					};
 					DD86D58B23D11CA00046E63E = {
-						CreatedOnToolsVersion = 12.4;
-						LastSwiftMigration = 1130;
+						CreatedOnToolsVersion = 13.0;
+                        LastSwiftMigration = 1300;
 					};
 					DD86D59323D11CA00046E63E = {
-						CreatedOnToolsVersion = 12.4;
-						LastSwiftMigration = 1130;
+						CreatedOnToolsVersion = 13.0;
+                        LastSwiftMigration = 1300;
 					};
 					DD86D5C323D11D140046E63E = {
-						CreatedOnToolsVersion = 12.4;
-						LastSwiftMigration = 1130;
+                        CreatedOnToolsVersion = 13.0;
+                        LastSwiftMigration = 1300;
 					};
+                    DD48BC93270E0DE800D842BC = {
+                        CreatedOnToolsVersion = 13.0;
+                        LastSwiftMigration = 1300;
+                    };
+                    DD86D56423D11C4B0046E63E = {
+                        CreatedOnToolsVersion = 13.0;
+                        LastSwiftMigration = 1300;
+                    };
+                    DD2FBC27258BE8BB00DB3211 = {
+                        CreatedOnToolsVersion = 13.0;
+                        LastSwiftMigration = 1300;
+                    };
 				};
 			};
 			buildConfigurationList = DD86D53723D11B3E0046E63E /* Build configuration list for PBXProject "<#TemplateProject#>" */;
@@ -473,6 +532,7 @@
 				DD86D58B23D11CA00046E63E /* <#TemplateProject#> tvOS */,
 				DD86D59323D11CA00046E63E /* <#TemplateProject#> tvOS Tests */,
 				DD86D5C323D11D140046E63E /* <#TemplateProject#> watchOS */,
+                DD48BC93270E0DE800D842BC /* <#TemplateProject#> watchOS Tests */,
 				DD86D56423D11C4B0046E63E /* Run SwiftLint */,
                 DD2FBC27258BE8BB00DB3211 /* XCFramework */,
 			);
@@ -529,6 +589,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+        DD48BC92270E0DE800D842BC /* Resources */ = {
+            isa = PBXResourcesBuildPhase;
+            buildActionMask = 2147483647;
+            files = (
+            );
+            runOnlyForDeploymentPostprocessing = 0;
+        };
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -620,6 +687,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+        DD48BC90270E0DE800D842BC /* Sources */ = {
+            isa = PBXSourcesBuildPhase;
+            buildActionMask = 2147483647;
+            files = (
+            );
+            runOnlyForDeploymentPostprocessing = 0;
+        };
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -627,11 +701,6 @@
 			isa = PBXTargetDependency;
 			target = DD86D53C23D11B3E0046E63E /* <#TemplateProject#> */;
 			targetProxy = DD86D54823D11B3E0046E63E /* PBXContainerItemProxy */;
-		};
-		DD86D56A23D11C6C0046E63E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DD86D56423D11C4B0046E63E /* Run SwiftLint */;
-			targetProxy = DD86D56923D11C6C0046E63E /* PBXContainerItemProxy */;
 		};
 		DD86D57B23D11C860046E63E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -643,6 +712,16 @@
 			target = DD86D58B23D11CA00046E63E /* <#TemplateProject#> tvOS */;
 			targetProxy = DD86D59623D11CA00046E63E /* PBXContainerItemProxy */;
 		};
+        DD48BC9A270E0DE800D842BC /* PBXTargetDependency */ = {
+            isa = PBXTargetDependency;
+            target = DD86D5C323D11D140046E63E /* <#TemplateProject#> watchOS */;
+            targetProxy = DD48BC99270E0DE800D842BC /* PBXContainerItemProxy */;
+        };
+        DD86D56A23D11C6C0046E63E /* PBXTargetDependency */ = {
+            isa = PBXTargetDependency;
+            target = DD86D56423D11C4B0046E63E /* Run SwiftLint */;
+            targetProxy = DD86D56923D11C6C0046E63E /* PBXContainerItemProxy */;
+        };
 		DD86D5D923D11DC60046E63E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DD86D56423D11C4B0046E63E /* Run SwiftLint */;
@@ -670,6 +749,22 @@
             name = Debug;
         };
         DD2FBC29258BE8BB00DB3211 /* Release */ = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                CODE_SIGN_STYLE = Automatic;
+                PRODUCT_NAME = "$(TARGET_NAME)";
+            };
+            name = Release;
+        };
+        DD86D56623D11C4B0046E63E /* Debug */ = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                CODE_SIGN_STYLE = Automatic;
+                PRODUCT_NAME = "$(TARGET_NAME)";
+            };
+            name = Debug;
+        };
+        DD86D56723D11C4B0046E63E /* Release */ = {
             isa = XCBuildConfiguration;
             buildSettings = {
                 CODE_SIGN_STYLE = Automatic;
@@ -831,7 +926,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Debug;
 		};
@@ -856,15 +951,15 @@
 				PRODUCT_NAME = <#TemplateProject#>;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Release;
 		};
 		DD86D55523D11B3E0046E63E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-                "CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+                CODE_SIGN_IDENTITY = "";
+                CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Plists/<#TemplateProject#>Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -873,15 +968,15 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.<#templateusername#>.<#templateproject#>tests;
 				PRODUCT_NAME = <#TemplateProject#>Tests;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Debug;
 		};
 		DD86D55623D11B3E0046E63E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-                "CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+                CODE_SIGN_IDENTITY = "";
+                CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Plists/<#TemplateProject#>Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -890,23 +985,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.<#templateusername#>.<#templateproject#>tests;
 				PRODUCT_NAME = <#TemplateProject#>Tests;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		DD86D56623D11C4B0046E63E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		DD86D56723D11C4B0046E63E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Release;
 		};
@@ -976,7 +1055,6 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.<#templateusername#>.<#templateproject#>tests;
 				PRODUCT_NAME = <#TemplateProject#>Tests;
 				SDKROOT = macosx;
@@ -998,7 +1076,6 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.<#templateusername#>.<#templateproject#>tests;
 				PRODUCT_NAME = <#TemplateProject#>Tests;
 				SDKROOT = macosx;
@@ -1063,6 +1140,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+                CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Plists/<#TemplateProject#>Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1076,7 +1154,6 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 13.2;
 			};
 			name = Debug;
 		};
@@ -1084,6 +1161,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+                CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Plists/<#TemplateProject#>Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1096,7 +1174,6 @@
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 13.2;
 			};
 			name = Release;
 		};
@@ -1155,6 +1232,48 @@
 			};
 			name = Release;
 		};
+        DD48BC9B270E0DE800D842BC /* Debug */ = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+                CODE_SIGN_IDENTITY = "";
+                CODE_SIGN_STYLE = Automatic;
+                INFOPLIST_FILE = "Plists/<#TemplateProject#>Tests-Info.plist";
+                LD_RUNPATH_SEARCH_PATHS = (
+                    "$(inherited)",
+                    "@executable_path/Frameworks",
+                    "@loader_path/Frameworks",
+                );
+                PRODUCT_BUNDLE_IDENTIFIER = com.<#templateusername#>.<#templateproject#>tests;
+                PRODUCT_NAME = <#TemplateProject#>Tests;
+                SDKROOT = watchos;
+                SWIFT_EMIT_LOC_STRINGS = NO;
+                SWIFT_VERSION = 5.0;
+                TARGETED_DEVICE_FAMILY = 4;
+            };
+            name = Debug;
+        };
+        DD48BC9C270E0DE800D842BC /* Release */ = {
+            isa = XCBuildConfiguration;
+            buildSettings = {
+                CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+                CODE_SIGN_IDENTITY = "";
+                CODE_SIGN_STYLE = Automatic;
+                INFOPLIST_FILE = "Plists/TestProjectTests-Info.plist";
+                LD_RUNPATH_SEARCH_PATHS = (
+                    "$(inherited)",
+                    "@executable_path/Frameworks",
+                    "@loader_path/Frameworks",
+                );
+                PRODUCT_BUNDLE_IDENTIFIER = com.somerandomiosdev.testprojecttests;
+                PRODUCT_NAME = TestProjectTests;
+                SDKROOT = watchos;
+                SWIFT_EMIT_LOC_STRINGS = NO;
+                SWIFT_VERSION = 5.0;
+                TARGETED_DEVICE_FAMILY = 4;
+            };
+            name = Release;
+        };
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1230,6 +1349,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+        DD48BC9D270E0DE800D842BC /* Build configuration list for PBXNativeTarget "<#TemplateProject#> watchOS Tests" */ = {
+            isa = XCConfigurationList;
+            buildConfigurations = (
+                DD48BC9B270E0DE800D842BC /* Debug */,
+                DD48BC9C270E0DE800D842BC /* Release */,
+            );
+            defaultConfigurationIsVisible = 0;
+            defaultConfigurationName = Release;
+        };
         DD86D56523D11C4B0046E63E /* Build configuration list for PBXAggregateTarget "Run SwiftLint" */ = {
             isa = XCConfigurationList;
             buildConfigurations = (
