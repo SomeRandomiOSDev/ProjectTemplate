@@ -5,7 +5,7 @@
 
 # Set Script Variables
 
-SCRIPT="$(realpath "$0")"
+SCRIPT="$0"
 SCRIPTS_DIR="$(dirname "$SCRIPT")"
 ROOT_DIR="$(dirname "$SCRIPTS_DIR")"
 CURRENT_DIR="$(pwd)"
@@ -32,7 +32,7 @@ function cleanup() {
 
     #
 
-    local CARTHAGE_CACHE="$(realpath ~/Library/Caches/org.carthage.CarthageKit)"
+    local CARTHAGE_CACHE="$HOME/Library/Caches/org.carthage.CarthageKit"
     if [ -e "$CARTHAGE_CACHE" ]; then
         if [ -e "$CARTHAGE_CACHE/dependencies/$PROJECT_NAME" ]; then
             rm -rf "$CARTHAGE_CACHE/dependencies/$PROJECT_NAME"
@@ -71,7 +71,7 @@ function printstep() {
 
 printstep "Setting Up Test Project..."
 
-source "$SCRIPTS_DIR/config.sh" -name "$PROJECT_NAME" -output "$OUTPUT_DIR"
+"$SCRIPTS_DIR/config.sh" -name "$PROJECT_NAME" -output "$OUTPUT_DIR"
 checkresult $? "'config.sh' script failed"
 
 # Check For Unit Test Dependencies

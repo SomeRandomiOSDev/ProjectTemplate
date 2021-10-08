@@ -5,8 +5,8 @@
 
 # Set Script Variables
 
-SCRIPT="$(realpath $0)"
-SCRIPTS="$(basename "$SCRIPT")"
+SCRIPT="$0"
+SCRIPTS="$(basename "$(dirname "$SCRIPT")")"
 ROOT_DIR="$(dirname "$(dirname "$SCRIPT")")"
 
 # Help
@@ -118,6 +118,7 @@ if [ ! -e "$OUTPUT_DIR/$PROJECT_NAME" ]; then
     rm -f "$SCRIPT"
     rm -f "$ROOT_DIR/$SCRIPTS/env.sh"
     rm -f "$ROOT_DIR/$SCRIPTS/unittests.sh"
+    rm -f "$ROOT_DIR/$SCRIPTS/unittests.rb"
     rm -f "$ROOT_DIR/README.md"
     rm -rf "$ROOT_DIR/.git"
 

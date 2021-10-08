@@ -27,7 +27,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [ -z ${OUTPUT_DIR+x} ]; then
-    OUTPUT_DIR="$(dirname $(realpath $0))/build/<#TemplateProject#>.xcframework"
+    OUTPUT_DIR="$(dirname "$0")/build/<#TemplateProject#>.xcframework"
 fi
 
 if [ -z ${CONFIGURATION+x} ]; then
@@ -37,7 +37,7 @@ fi
 # Create Temporary Directory
 
 TMPDIR=`mktemp -d /tmp/.<#templateproject#>.xcframework.build.XXXXXX`
-cd "$(dirname $(dirname $(realpath $0)))"
+cd "$(dirname "$(dirname "$0")")"
 
 check_result() {
     if [ $1 -ne 0 ]; then
