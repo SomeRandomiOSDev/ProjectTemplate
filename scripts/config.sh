@@ -5,9 +5,9 @@
 
 # Set Script Variables
 
-SCRIPT="$(realpath $0)"
-SCRIPTS="$(basename "$SCRIPT")"
-ROOT_DIR="$(dirname "$(dirname "$SCRIPT")")"
+SCRIPT="$("$(dirname "$0")/resolvepath.sh" "$0")"
+SCRIPTS_DIR="$(dirname "$SCRIPT")"
+ROOT_DIR="$(dirname "$SCRIPTS_DIR")"
 
 # Help
 
@@ -113,11 +113,13 @@ if [ ! -e "$OUTPUT_DIR/$PROJECT_NAME" ]; then
     cp -R "${ROOT_DIR%/}/" "$OUTPUT_DIR/$PROJECT_NAME"
 
     ROOT_DIR="$OUTPUT_DIR/$PROJECT_NAME"
-    SCRIPT="$ROOT_DIR/$SCRIPTS/$(basename "$SCRIPT")"
+    SCRIPTS_DIR="$ROOT_DIR/$(basename "$SCRIPTS_DIR")"
+    SCRIPT="$SCRIPTS_DIR/$(basename "$SCRIPT")"
 
     rm -f "$SCRIPT"
-    rm -f "$ROOT_DIR/$SCRIPTS/env.sh"
-    rm -f "$ROOT_DIR/$SCRIPTS/unittests.sh"
+    rm -f "$SCRIPTS_DIR/env.sh"
+    rm -f "$SCRIPTS_DIR/unittests.sh"
+    rm -f "$SCRIPTS_DIR/unittests.rb"
     rm -f "$ROOT_DIR/README.md"
     rm -rf "$ROOT_DIR/.git"
 
