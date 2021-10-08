@@ -5,35 +5,8 @@
 # carthage.sh
 # Usage example: ./carthage.sh build --platform iOS
 
-function compare_versions() {
-    if [ $1 = $2 ]; then
-        return 0
-    fi
-
-    local IFS=.
-    local i LHS=($1) RHS=($2)
-
-    for ((i=${#LHS[@]}; i<${#RHS[@]}; i++)); do
-        LHS[i]=0
-    done
-
-    for ((i=0; i<${#LHS[@]}; i++)); do
-        if [ -z ${RHS[i]} ]; then
-            RHS[i]=0
-        fi
-
-        if ((10#${LHS[i]} > 10#${RHS[i]})); then
-            return 1
-        elif ((10#${LHS[i]} < 10#${RHS[i]})); then
-            return -1
-        fi
-    done
-
-    return 0
-}
-
-VERSION=`carthage version`
-compare_versions "$VERSION" "0.37.0"
+VERSION="$(carthage version)"
+"$(dirname "$0")/versions.sh" "$VERSION" "0.37.0"
 
 if [ $? -ge 0 ]; then
     # Carthage version is greater than or equal to 0.37.0 meaning we can use the --use-xcframeworks flag
