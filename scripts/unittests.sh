@@ -5,13 +5,14 @@
 
 # Set Script Variables
 
-SCRIPT="$0"
+SCRIPT="$("$(dirname "$0")/resolvepath.sh" "$0")"
 SCRIPTS_DIR="$(dirname "$SCRIPT")"
 ROOT_DIR="$(dirname "$SCRIPTS_DIR")"
-CURRENT_DIR="$(pwd)"
+CURRENT_DIR="$(pwd -P)"
 
-OUTPUT_DIR="$(mktemp -d)"
-PROJECT_NAME="$(basename "$(mktemp -u $OUTPUT_DIR/ProjectTemplateUnitTests_XXXXXX)")"
+TEMP_DIR="$(mktemp -d)"
+PROJECT_NAME="$(basename "$(mktemp -u $TEMP_DIR/ProjectTemplateUnitTests_XXXXXX)")"
+OUTPUT_DIR="$TEMP_DIR/$PROJECT_NAME"
 
 EXIT_CODE=0
 EXIT_MESSAGE=""
@@ -25,9 +26,9 @@ fi
 function cleanup() {
     if [ -z ${NO_CLEAN+x} ]; then
         cd "$CURRENT_DIR"
-        rm -rf "$OUTPUT_DIR"
+        rm -rf "$TEMP_DIR"
     else
-        echo "Test Project: $OUTPUT_DIR/$PROJECT_NAME"
+        echo "Test Project: $OUTPUT_DIR"
     fi
 
     #
@@ -71,12 +72,12 @@ function printstep() {
 
 printstep "Setting Up Test Project..."
 
-"$SCRIPTS_DIR/config.sh" -name "$PROJECT_NAME" -output "$OUTPUT_DIR"
+"$SCRIPTS_DIR/config.sh" -name "$PROJECT_NAME" -output "$TEMP_DIR"
 checkresult $? "'config.sh' script failed"
 
 # Check For Unit Test Dependencies
 
-cd "$OUTPUT_DIR/$PROJECT_NAME"
+cd "$OUTPUT_DIR"
 printstep "Checking Dependencies..."
 
 ### Carthage
@@ -122,10 +123,11 @@ fi
 
 printstep "Configuring Test Project..."
 
-echo -e "class SomeClass {\n    var value: Int = 3\n}" > "$(pwd)/Sources/$PROJECT_NAME/SomeClass.swift"
-echo -e "@testable import $PROJECT_NAME\nimport XCTest\n\nclass SomeClassTests: XCTestCase {\n\n    func testSomeClass() {\n        let object = SomeClass()\n        XCTAssertEqual(object.value, 3)\n    }\n}" > "$(pwd)/Tests/${PROJECT_NAME}Tests/SomeClassTests.swift"
+echo -e "class SomeClass {\n    var value: Int = 3\n}" > "$OUTPUT_DIR/Sources/$PROJECT_NAME/SomeClass.swift"
+echo -e "@testable import $PROJECT_NAME\nimport XCTest\n\nclass SomeClassTests: XCTestCase {\n\n    func testSomeClass() {\n        let object = SomeClass()\n        XCTAssertEqual(object.value, 3)\n    }\n}" > "$OUTPUT_DIR/Tests/${PROJECT_NAME}Tests/SomeClassTests.swift"
 
-ruby "./scripts/unittests.rb" "$(pwd)/$PROJECT_NAME.xcodeproj" "$(pwd)/Sources/$PROJECT_NAME/SomeClass.swift" "$(pwd)/Tests/${PROJECT_NAME}Tests/SomeClassTests.swift"
+echo "SCRIPTS_DIR: $SCRIPTS_DIR"
+ruby "$SCRIPTS_DIR/unittests.rb" "$OUTPUT_DIR/$PROJECT_NAME.xcodeproj" "$OUTPUT_DIR/Sources/$PROJECT_NAME/SomeClass.swift" "$OUTPUT_DIR/Tests/${PROJECT_NAME}Tests/SomeClassTests.swift"
 checkresult $? "Unable to configure the test project for testing"
 
 # Run Unit Tests
@@ -142,7 +144,7 @@ git tag | xargs git tag -d
 git tag 1.0
 checkresult $? "Unable to tag local git repo for running Carthage unit tests"
 
-echo "git \"file://$(pwd)\"" > ./Cartfile
+echo "git \"file://$OUTPUT_DIR\"" > ./Cartfile
 
 ./scripts/carthage.sh update
 checkresult $? "Carthage Unit Test failed: \"Build\""
