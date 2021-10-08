@@ -3,10 +3,16 @@
 # config.sh
 # Usage example: ./config.sh -name <project_name> [-test] [-verbose]
 
+# Set Script Variables
+
+SCRIPT="$(realpath $0)"
+SCRIPTS="$(basename "$SCRIPT")"
+ROOT_DIR="$(dirname "$(dirname "$SCRIPT")")"
+
 # Help
 
 function print_help() {
-    echo "./config.sh -name <project_name> [-help] [-test] [-verbose]"
+    echo "./config.sh -name <project_name> [-output <output_folder>] [-help] [-test] [-verbose]"
     exit 1
 }
 
@@ -18,6 +24,12 @@ while [[ $# -gt 0 ]]; do
         PROJECT_NAME="$2"
         shift # -name
         shift # <project_name>
+        ;;
+
+        -output)
+        OUTPUT_DIR="$2"
+        shift # -output
+        shift # <output_folder>
         ;;
 
         -help)
@@ -46,10 +58,9 @@ if [ -z ${PROJECT_NAME+x} ]; then
     print_help
 fi
 
-# Set Script Variables
-
-SCRIPT="$(realpath $0)"
-ROOT_DIR="$(dirname "$(dirname "$SCRIPT")")"
+if [ -z ${OUTPUT_DIR+x} ]; then
+    OUTPUT_DIR="$(dirname "$ROOT_DIR")"
+fi
 
 # Initialize Environment Variables
 
@@ -93,27 +104,32 @@ function setup_git() {
 
 # Copy Project Template
 
-if [ "$(basename "$ROOT_DIR")" != "${PROJECT_NAME}" ]; then
-    if [ -e "$(dirname "$ROOT_DIR")/$PROJECT_NAME" ]; then
-        echo "Destination project folder already exits: \"$(dirname "$ROOT_DIR")/$PROJECT_NAME\""
-        exit 1
-    elif [ "$VERBOSE" = "1" ]; then
-        echo "Copying \"$ROOT_DIR\" to \"$(dirname "$ROOT_DIR")/$PROJECT_NAME\""
+if [ ! -e "$OUTPUT_DIR/$PROJECT_NAME" ]; then
+    if [ "$VERBOSE" = "1" ]; then
+        echo "Copying \"$ROOT_DIR\" to \"$OUTPUT_DIR/$PROJECT_NAME\""
     fi
 
-    cp -R "$ROOT_DIR" "$(dirname "$ROOT_DIR")/$PROJECT_NAME"
+    mkdir "$OUTPUT_DIR/$PROJECT_NAME"
+    cp -R "${ROOT_DIR%/}/" "$OUTPUT_DIR/$PROJECT_NAME"
 
-    ROOT_DIR="$(dirname "$ROOT_DIR")/$PROJECT_NAME"
-    SCRIPT="$ROOT_DIR/$(basename "$(dirname "$SCRIPT")")/$(basename "$SCRIPT")"
+    ROOT_DIR="$OUTPUT_DIR/$PROJECT_NAME"
+    SCRIPT="$ROOT_DIR/$SCRIPTS/$(basename "$SCRIPT")"
 
     rm -f "$SCRIPT"
-    rm -f "$(dirname "$SCRIPT")/env.sh"
+    rm -f "$ROOT_DIR/$SCRIPTS/env.sh"
+    rm -f "$ROOT_DIR/$SCRIPTS/unittests.sh"
     rm -f "$ROOT_DIR/README.md"
     rm -rf "$ROOT_DIR/.git"
+
+    rm -rf "$ROOT_DIR/.github/workflows"
+    mv "$ROOT_DIR/workflows" "$ROOT_DIR/.github/workflows"
 
     find "$ROOT_DIR" -regex ".*\.gitkeep" -delete
 
     setup_git "$ROOT_DIR"
+else
+    echo "Destination project folder already exits: \"$OUTPUT_DIR/$PROJECT_NAME\""
+    exit 1
 fi
 
 # Rename files with placeholders
