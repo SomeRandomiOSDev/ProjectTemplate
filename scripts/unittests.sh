@@ -139,9 +139,9 @@ printstep "Running Unit Tests..."
 printstep "Testing 'carthage.yml' Workflow..."
 
 git add .
-git commit -m "Commit"
+git commit -m "Commit" --no-gpg-sign
 git tag | xargs git tag -d
-git tag 1.0
+git tag --no-sign 1.0
 checkresult $? "Unable to tag local git repo for running Carthage unit tests"
 
 echo "git \"file://$OUTPUT_DIR\"" > ./Cartfile
