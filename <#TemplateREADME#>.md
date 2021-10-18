@@ -35,7 +35,7 @@ github "<#TemplateUsername#>/<#TemplateProject#>"
 To install via the Swift Package Manager add the following line to your `Package.swift` file's `dependencies`:
 
 ```swift
-.package(url: "https://github.com/<#TemplateUsername#>/<#TemplateProject#>.git", from: "1.0.0")
+.package(url: "https://github.com/<#TemplateUsername#>/<#TemplateProject#>.git", from: "0.1.0")
 ```
 
 Usage
