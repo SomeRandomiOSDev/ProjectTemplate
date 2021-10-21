@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 # config.sh
 # Usage example: ./config.sh -name <project_name> [-test] [-verbose]
 
