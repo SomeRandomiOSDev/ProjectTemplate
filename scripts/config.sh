@@ -98,6 +98,7 @@ function setup_git() {
         if [ -n ${GIT_GPG+x} ]; then
             git config user.signingkey "$GIT_GPG"
             git config commit.gpgsign true
+            git config tag.gpgsign true
         fi
     fi
 }
