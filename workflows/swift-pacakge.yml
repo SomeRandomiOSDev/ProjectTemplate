@@ -28,15 +28,9 @@ jobs:
       run: |
         swift test -v --enable-code-coverage
 
-    - name: Generate Code Coverage File
-      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-      run: |
-        xcrun llvm-cov export --instr-profile=.build/x86_64-apple-macosx/debug/codecov/default.profdata .build/x86_64-apple-macosx/debug/<#TemplateProject#>PackageTests.xctest/Contents/MacOS/<#TemplateProject#>PackageTests > ./info.lcov
-
     - name: Upload Code Coverage
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-      uses: codecov/codecov-action@v1
+      uses: codecov/codecov-action@v2
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        file: ./info.lcov
         verbose: true
