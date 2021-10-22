@@ -221,15 +221,6 @@ else
     checkresult -1 "CocoaPods is not installed and is required for running unit tests: \033[4;34mhttps://guides.cocoapods.org/using/getting-started.html#installation"
 fi
 
-### Xcodeproj
-
-# This should be installed with CocoaPods, but we'll include it just in case CocoaPods removes it from its dependencies in a future release
-if which xcodeproj >/dev/null; then
-    echo "Xcodeproj: $(xcodeproj --version)"
-else
-    checkresult -1 "'xcodeproj' Ruby Gem is not installed and is required for running unit tests: \033[4;34mhttps://rubygems.org/gems/xcodeproj"
-fi
-
 # Run Tests
 
 printstep "Running Tests..."
