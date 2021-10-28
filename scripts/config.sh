@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # config.sh
-# Usage example: ./config.sh -name <project_name> [-test] [-verbose]
+# Usage example: ./config.sh --verbose project_name
 
 # Set Script Variables
 
@@ -9,53 +9,86 @@ SCRIPT="$("$(dirname "$0")/resolvepath.sh" "$0")"
 SCRIPTS_DIR="$(dirname "$SCRIPT")"
 ROOT_DIR="$(dirname "$SCRIPTS_DIR")"
 
+EXIT_MESSAGE=""
+EXIT_CODE=0
+
 # Help
 
-function print_help() {
-    echo "./config.sh -name <project_name> [-output <output_folder>] [-help] [-test] [-verbose]"
-    exit 1
+function printhelp() {
+    local HELP="Configure a new framework project using this workspace as a template.\n\n"
+    HELP+="config.sh [--help | -h] [--verbose | -v] [--dryrun | -t] [(--output | -o) <output_folder>] project_name\n"
+    HELP+="\n"
+    HELP+="FLAGS:\n"
+    HELP+="\n"
+    HELP+="--help, -h)    Print this help message and exit.\n"
+    HELP+="\n"
+    HELP+="--dryrun, -t)  Run as if a new project was being configured with the given\n"
+    HELP+="               inputs without actually creating the project. This flag\n"
+    HELP+="               implicitly sets the --verbose flag.\n"
+    HELP+="\n"
+    HELP+="--verbose, -v) Enable verbose logging.\n"
+    HELP+="\n"
+    HELP+="--output, -o)  The folder in which to write the newly configured project to. If\n"
+    HELP+="               not specified this defaults to folder containing this template\n"
+    HELP+="               project (i.e. \"$(dirname $0)/../../\")\n"
+    HELP+="\n"
+    HELP+="ARGUMENTS:\n"
+    HELP+="\n"
+    HELP+="project_name:  The name of the project to create.\n"
+
+    IFS='%'
+    echo -e $HELP 1>&2
+    unset IFS
+
+    exit $EXIT_CODE
 }
 
 # Parse Arguments
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
-        -name)
-        PROJECT_NAME="$2"
-        shift # -name
-        shift # <project_name>
-        ;;
-
-        -output)
+        --output | -o)
         OUTPUT_DIR="$2"
         shift # -output
         shift # <output_folder>
         ;;
 
-        -help)
-        print_help
+        --help | -h)
+        printhelp
         ;;
 
-        -test)
-        TEST_MODE=1
+        --dryrun | -t)
+        DRYRUN=1
         VERBOSE=1
         shift # -test
         ;;
 
-        -verbose)
+        --verbose | -v)
         VERBOSE=1
         shift # -verbose
         ;;
 
         *)
-        echo "Unknown argument: $1"
-        print_help
+        if [[ $1 == -* ]]; then # argument starts with "-"
+            echo -e "Unknown argument: $1\n" 1>&2
+            EXIT_CODE=1
+            printhelp
+        elif [ -z ${PROJECT_NAME+x} ]; then
+            PROJECT_NAME="$1"
+            shift # <project_name>
+        else
+            echo -e "Unexpected positional argument: $1\n" 1>&2
+            EXIT_CODE=1
+            printhelp
+        fi
+        ;;
     esac
 done
 
 if [ -z ${PROJECT_NAME+x} ]; then
-    echo "Missing `-name` argument"
-    print_help
+    echo -e "Missing `project_name` positional argument\n" 1>&2
+    EXIT_CODE=1
+    printhelp
 fi
 
 if [ -z ${OUTPUT_DIR+x} ]; then
@@ -64,9 +97,40 @@ fi
 
 # Initialize Environment Variables
 
-source "$(dirname "$SCRIPT")/env.sh"
+PROJECT_DIR="$OUTPUT_DIR/$PROJECT_NAME"
+
+source "$SCRIPTS_DIR/env.sh"
 
 # Functions
+
+function cleanup() {
+    if [[ "$DRYRUN" == "1" ]] || [[ "$EXIT_CODE" != "0" ]]; then
+        rm -rf "$PROJECT_DIR"
+    fi
+
+    if [ "${#EXIT_MESSAGE}" != 0 ]; then
+        if [ "$EXIT_MESSAGE" == "**printhelp**" ]; then
+            printhelp
+        else
+            echo -e "$EXIT_MESSAGE" 1>&2
+        fi
+    fi
+
+    exit $EXIT_CODE
+}
+
+function checkresult() {
+    if [ "$1" != "0" ]; then
+        if [ "${#2}" != "0" ]; then
+            EXIT_MESSAGE="\033[31m$2\033[0m"
+        else
+            EXIT_MESSAGE="**printhelp**"
+        fi
+
+        EXIT_CODE=$1
+        cleanup
+    fi
+}
 
 function lower() {
     echo "$(echo "$1" | tr '[:upper:]' '[:lower:]')"
@@ -79,67 +143,100 @@ function upper() {
 function setup_git() {
     if [ "$INIT_GIT" = "1" ]; then
         # Init Git Repo
+        local ERROR_MESSAGE="An error occurred while configuring the git repo for the project: $PROJECT_DIR\n"
         local PWD="$(pwd)"
         cd "$1"
 
         git init --quiet --initial-branch=main
-        cd "$PWD"
+        checkresult $? "$ERROR_MESSAGE"
 
         # Local Git Options
         if [ -n ${GIT_USERNAME+x} ]; then
             git config credential.username "$GIT_USERNAME"
+            checkresult $? "$ERROR_MESSAGE"
         fi
         if [ -n ${GIT_NAME+x} ]; then
             git config user.name "$GIT_NAME"
+            checkresult $? "$ERROR_MESSAGE"
         fi
         if [ -n ${GIT_EMAIL+x} ]; then
             git config user.email "$GIT_EMAIL"
+            checkresult $? "$ERROR_MESSAGE"
         fi
         if [ -n ${GIT_GPG+x} ]; then
             git config user.signingkey "$GIT_GPG"
-            git config commit.gpgsign true
-            git config tag.gpgsign true
+            checkresult $? "$ERROR_MESSAGE"
+
+            if [ "$GIT_SIGN_COMMITS" == "1" ]; then
+                git config commit.gpgsign true
+                checkresult $? "$ERROR_MESSAGE"
+            fi
+
+            if [ "$GIT_SIGN_TAGS" == "1" ]; then
+                git config tag.gpgsign true
+                checkresult $? "$ERROR_MESSAGE"
+            fi
         fi
+
+        cd "$PWD"
     fi
 }
 
 # Copy Project Template
 
-if [ ! -e "$OUTPUT_DIR/$PROJECT_NAME" ]; then
+if [ ! -e "$PROJECT_DIR" ]; then
+    ERROR_MESSAGE="An error occurred while configuring the project directory: $PROJECT_DIR\n"
+
     if [ "$VERBOSE" = "1" ]; then
-        echo "Copying \"$ROOT_DIR\" to \"$OUTPUT_DIR/$PROJECT_NAME\""
+        echo "Copying \"$ROOT_DIR\" to \"$PROJECT_DIR\""
     fi
 
-    mkdir "$OUTPUT_DIR/$PROJECT_NAME"
-    cp -R "${ROOT_DIR%/}/" "$OUTPUT_DIR/$PROJECT_NAME"
+    mkdir "$PROJECT_DIR"
+    checkresult $? "$ERROR_MESSAGE"
 
-    ROOT_DIR="$OUTPUT_DIR/$PROJECT_NAME"
-    SCRIPTS_DIR="$ROOT_DIR/$(basename "$SCRIPTS_DIR")"
-    SCRIPT="$SCRIPTS_DIR/$(basename "$SCRIPT")"
+    cp -R "${ROOT_DIR%/}/" "$PROJECT_DIR"
+    checkresult $? "$ERROR_MESSAGE"
 
-    rm -f "$SCRIPT"
-    rm -f "$SCRIPTS_DIR/env.sh"
-    rm -f "$SCRIPTS_DIR/unittests.sh"
-    rm -f "$SCRIPTS_DIR/unittests.rb"
-    rm -f "$ROOT_DIR/README.md"
-    rm -rf "$ROOT_DIR/.git"
+    NEW_SCRIPTS_DIR="$PROJECT_DIR/$(basename "$SCRIPTS_DIR")"
+    NEW_SCRIPT="$NEW_SCRIPTS_DIR/$(basename "$SCRIPT")"
 
-    rm -rf "$ROOT_DIR/.github/workflows"
-    mv "$ROOT_DIR/workflows" "$ROOT_DIR/.github/workflows"
+    rm -f "$NEW_SCRIPT"
+    checkresult $? "$ERROR_MESSAGE"
 
-    find "$ROOT_DIR" -regex ".*\.gitkeep" -delete
+    rm -f "$NEW_SCRIPTS_DIR/env.sh"
+    checkresult $? "$ERROR_MESSAGE"
 
-    setup_git "$ROOT_DIR"
+    rm -f "$NEW_SCRIPTS_DIR/unittests.sh"
+    checkresult $? "$ERROR_MESSAGE"
+
+    rm -f "$NEW_SCRIPTS_DIR/unittests.rb"
+    checkresult $? "$ERROR_MESSAGE"
+
+    rm -f "$PROJECT_DIR/README.md"
+    checkresult $? "$ERROR_MESSAGE"
+
+    rm -rf "$PROJECT_DIR/.git"
+    checkresult $? "$ERROR_MESSAGE"
+
+    rm -rf "$PROJECT_DIR/.github/workflows"
+    checkresult $? "$ERROR_MESSAGE"
+
+    mv "$PROJECT_DIR/workflows" "$PROJECT_DIR/.github/workflows"
+    checkresult $? "$ERROR_MESSAGE"
+
+    find "$PROJECT_DIR" -regex ".*\.gitkeep" -delete
+    checkresult $? "$ERROR_MESSAGE"
+
+    setup_git "$PROJECT_DIR"
 else
-    echo "Destination project folder already exits: \"$OUTPUT_DIR/$PROJECT_NAME\""
-    exit 1
+    checkresult 1 "Destination project folder already exits: \"$PROJECT_DIR\""
 fi
 
 # Rename files with placeholders
 
 function rename_placeholder_files() {
     local IFS=$'\n'
-    local FILES=($(find "$ROOT_DIR" -regex ".*$1.*"))
+    local FILES=($(find "$PROJECT_DIR" -regex ".*$1.*"))
     local COUNT=${#FILES[@]}
 
     while [ ${#FILES[@]} -gt 0 ]; do
@@ -150,14 +247,16 @@ function rename_placeholder_files() {
                 echo "Renaming \"$FILE\" to \"$NEW_FILE\""
             fi
 
-            if [ -z ${TEST_MODE+x} ]; then
+            if [ -z ${DRYRUN+x} ]; then
                 mv "$FILE" "$NEW_FILE"
-                FILES=($(find "$ROOT_DIR" -regex ".*$1.*"))
+                checkresult $? "An error occurred while renaming a file: \"$FILE\" -> \"$NEW_FILE\""
+
+                FILES=($(find "$PROJECT_DIR" -regex ".*$1.*"))
                 break
             fi
         done
 
-        if [ "$TEST_MODE" == "1" ]; then
+        if [ "$DRYRUN" == "1" ]; then
             break
         fi
     done
@@ -172,7 +271,7 @@ rename_placeholder_files "<#TemplateREADME#>" "README"
 
 function replace_placeholders_in_files() {
     local IFS=$'\n'
-    local FILES=($(grep -lr "$1" "$ROOT_DIR"))
+    local FILES=($(grep -lr "$1" "$PROJECT_DIR"))
 
     if [ -n "$FILES" ]; then
         for FILE in "${FILES[@]}"; do
@@ -180,8 +279,9 @@ function replace_placeholders_in_files() {
                 echo "Replacing instances of \"$1\" with \"$2\" in \"$FILE\""
             fi
 
-            if [ -z ${TEST_MODE+x} ]; then
+            if [ -z ${DRYRUN+x} ]; then
                 sed -e "s/$1/$2/g" -i "" "$FILE"
+                checkresult $? "An error occurred while replacing placeholders (\"$1\" -> \"$2\") in file: \"$FILE\""
             fi
         done
     fi
@@ -207,6 +307,4 @@ replace_placeholders_in_files "<#TemplateYear#>" "$(date +%Y)"
 
 #
 
-if [ "$TEST_MODE" = "1" ]; then
-    rm -rf "$ROOT_DIR"
-fi
+cleanup

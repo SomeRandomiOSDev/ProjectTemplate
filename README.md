@@ -1,17 +1,14 @@
-ProjectTemplate
-========
+# ProjectTemplate
 
 [![License MIT](https://img.shields.io/badge/license-MIT-success)](https://mit-license.org)
 
 My custom project template for creating frameworks for iOS, macOS, tvOS and watchOS.
 
-Purpose
---------
+## Purpose
 
 After setting up who knows how many new projects for each of my framework ideas, I've grown sick and tired of going through and configuring all of the new projects exactly the same way. Inevitably I forget a build setting or a configuration file here or there, so in true developer form I spent way too much time setting up this small project for the sole purpose of automating the setting up of new framework projects with identical configurations and settings. 
 
-Usage
---------
+## Usage
 
 The first step in utilizing this template is to first clone the repo:
 
@@ -31,12 +28,10 @@ This script first copies the `ProjectTemplate` directory to a directory using th
 
 After the script runs, you now have an empty project pre-configured for building various configurations for all supported platforms. 
 
-Author
---------
+## Author
 
 Joe Newton, somerandomiosdev@gmail.com
 
-License
---------
+## License
 
 **ProjectTemplate** is available under the MIT license. See the `LICENSE` file for more info.
