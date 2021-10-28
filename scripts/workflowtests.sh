@@ -15,8 +15,9 @@ EXIT_MESSAGE=""
 
 # Help
 
-function print_help() {
-    local HELP="workflowtests.sh [--help | -h] [--project-name <project_name>]\n"
+function printhelp() {
+    local HELP="Run tests for the Github Action workflows.\n\n"
+    HELP+="workflowtests.sh [--help | -h] [--project-name <project_name>]\n"
     HELP+="                 [--no-clean | --no-clean-on-fail]\n"
     HELP+="                 [--is-running-in-temp-env]\n"
     HELP+="\n"
@@ -47,10 +48,10 @@ function print_help() {
     HELP+="                          have finished running."
 
     IFS='%'
-    echo -e $HELP
+    echo -e $HELP 1>&2
     unset IFS
 
-    exit 0
+    exit $EXIT_CODE
 }
 
 # Parse Arguments
@@ -79,32 +80,15 @@ while [[ $# -gt 0 ]]; do
         ;;
 
         --help | -h)
-        print_help
+        printhelp
         ;;
 
         *)
-        echo "Unknown argument: $1"
-        print_help
+        echo -e "Unknown argument: $1\n" 1>&2
+        EXIT_CODE=1
+        printhelp
     esac
 done
-
-if [ -z ${PROJECT_NAME+x} ]; then
-    PROJECTS=$(ls "$ROOT_DIR" | grep \.xcodeproj$)
-
-    if [ "${#PROJECTS[@]}" == "0" ]; then
-        echo "No Xcode projects found in root directory. Try specifying a project name:"
-        print_help
-    elif [ "${#PROJECTS[@]}" == "1" ]; then
-        PROJECT_NAME="${PROJECTS[0]}"
-        PROJECT_NAME="${PROJECT_NAME%.*}"
-    else
-        echo "More than 1 Xcode projects found in root directory. Specify which project to run tests against:"
-        print_help
-    fi
-elif [ ! -e "$ROOT_DIR/$PROJECT_NAME.xcodeproj" ]; then
-    echo "Unable to locate Xcode project to run tests against: $ROOT_DIR/$PROJECT_NAME.xcodeproj"
-    print_help
-fi
 
 if [ -z ${IS_RUNNING_IN_TEMP_ENV+x} ]; then
     IS_RUNNING_IN_TEMP_ENV=0
@@ -147,8 +131,12 @@ function cleanup() {
 
     #
 
-    if [ ${#EXIT_MESSAGE} -gt 0 ]; then
-        echo -e "$EXIT_MESSAGE"
+    if [ "${#EXIT_MESSAGE}" != 0 ]; then
+        if [ "$EXIT_MESSAGE" == "**printhelp**" ]; then
+            printhelp
+        else
+            echo -e "$EXIT_MESSAGE" 1>&2
+        fi
     fi
 
     exit $EXIT_CODE
@@ -156,9 +144,13 @@ function cleanup() {
 
 function checkresult() {
     if [ "$1" != "0" ]; then
-        EXIT_MESSAGE="\033[31m$2\033[0m"
-        EXIT_CODE=$1
+        if [ "${#2}" != "0" ]; then
+            EXIT_MESSAGE="\033[31m$2\033[0m"
+        else
+            EXIT_MESSAGE="**printhelp**"
+        fi
 
+        EXIT_CODE=$1
         cleanup
     fi
 }
@@ -168,22 +160,52 @@ function printstep() {
 }
 
 function setuptemp() {
-    local TEMP_DIR="$(mktemp -d)"
-    local TEMP_NAME="$(basename "$(mktemp -u "$TEMP_DIR/${PROJECT_NAME}Tests_XXXXXX")")"
+    TEMP_DIR="$(mktemp -d)"
+
+    local TEMP_NAME="$(basename "$(mktemp -u "$TEMP_DIR/${PROJECT_NAME}WorkflowTests_XXXXXXXX")")"
     local OUTPUT_DIR="$TEMP_DIR/$TEMP_NAME"
 
     cp -R "$ROOT_DIR" "$OUTPUT_DIR"
     if [ "$?" != "0" ]; then exit $?; fi
 
+    if [ -e "$OUTPUT_DIR/.build" ]; then
+        rm -rf "$OUTPUT_DIR/.build"
+    fi
+    if [ -e "$OUTPUT_DIR/.swiftpm" ]; then
+        rm -rf "$OUTPUT_DIR/.swiftpm"
+    fi
+
     echo "$OUTPUT_DIR"
 }
 
+function interrupt() {
+    EXIT_CODE=$SIGINT
+    EXIT_MESSAGE="\033[33mTests run was interrupted..\033[0m"
+
+    cleanup
+}
+
 # Setup
+
+trap interrupt SIGINT # Cleanup if the user aborts (Ctrl + C)
+
+#
+
+ARGUMENTS=()
+if [ "${#PROJECT_NAME}" != 0 ]; then
+    ARGUMENTS=(--project-name "$PROJECT_NAME")
+fi
+
+PROJECT_NAME="$("$SCRIPTS_DIR/findproject.sh" "${ARGUMENTS[@]}")"
+checkresult $?
+
+#
 
 if [ "$IS_RUNNING_IN_TEMP_ENV" == "1" ]; then
     OUTPUT_DIR="$ROOT_DIR"
 else
     OUTPUT_DIR="$(setuptemp)"
+    echo -e "Testing from Temporary Directory: \033[33m$OUTPUT_DIR\033[0m"
 fi
 
 # Check For Dependencies
@@ -261,8 +283,11 @@ printstep "Testing 'swift-package.yml' Workflow..."
 swift build -v
 checkresult $? "'Build' step of 'swift-package.yml' workflow failed."
 
-swift test -v
+swift test -v --enable-code-coverage
 checkresult $? "'Test' step of 'swift-package.yml' workflow failed."
+
+xcrun llvm-cov export --format=lcov --instr-profile=".build/debug/codecov/default.profdata" ".build/debug/${PROJECT_NAME}PackageTests.xctest/Contents/MacOS/${PROJECT_NAME}PackageTests" > "./codecov.lcov"
+checkresult $? "'Generate Code Coverage File' step of 'swift-package.yml' workflow failed."
 
 printstep "'swift-package.yml' Workflow Tests Passed\n"
 
@@ -270,7 +295,7 @@ printstep "'swift-package.yml' Workflow Tests Passed\n"
 
 printstep "Testing 'xcframework.yml' Workflow..."
 
-./scripts/xcframework.sh -output "./$PROJECT_NAME.xcframework"
+./scripts/xcframework.sh --project-name "$PROJECT_NAME" --output "$ROOT_DIR"
 checkresult $? "'Build' step of 'xcframework.yml' workflow failed."
 
 printstep "'xcframework.yml' Workflow Tests Passed\n"

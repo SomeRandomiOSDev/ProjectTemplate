@@ -10,7 +10,7 @@ SCRIPTS_DIR="$(dirname "$SCRIPT")"
 ROOT_DIR="$(dirname "$SCRIPTS_DIR")"
 
 TEMP_DIR="$(mktemp -d)"
-PROJECT_NAME="$(basename "$(mktemp -u $TEMP_DIR/ProjectTemplateUnitTests_XXXXXX)")"
+PROJECT_NAME="$(basename "$(mktemp -u $TEMP_DIR/ProjectTemplateUnitTests_XXXXXXXX)")"
 OUTPUT_DIR="$TEMP_DIR/$PROJECT_NAME"
 
 NO_CLEAN=0
@@ -18,6 +18,28 @@ NO_CLEAN_ON_FAIL=0
 
 EXIT_CODE=0
 EXIT_MESSAGE=""
+
+# Help
+
+function printhelp() {
+    local HELP="Run 'ProjectTemplate' unit tests.\n\n"
+    HELP+="unittests.sh [--help | -h] [--no-clean | --no-clean-on-fail]\n"
+    HELP+="\n"
+    HELP+="--help, -h)         Print this help message and exit.\n"
+    HELP+="\n"
+    HELP+="--no-clean)         Never clean up the temporary project created to run these\n"
+    HELP+="                    tests upon completion.\n"
+    HELP+="\n"
+    HELP+="--no-clean-on-fail) Same as --no-clean with the exception that if the tests\n"
+    HELP+="                    succeed clean up will continue as normal. This is mutually\n"
+    HELP+="                    exclusive with --no-clean with --no-clean taking precedence.\n"
+
+    IFS='%'
+    echo -e $HELP 1>&2
+    unset IFS
+
+    exit $EXIT_CODE
+}
 
 # Parse Arguments
 
@@ -34,8 +56,8 @@ while [[ $# -gt 0 ]]; do
         ;;
 
         *)
-        echo "Unknown argument: $1"
-        print_help
+        echo -e "Unknown argument: $1\n" 1>&2
+        printhelp
     esac
 done
 
@@ -72,7 +94,7 @@ function printstep() {
 
 printstep "Setting Up Test Project..."
 
-"$SCRIPTS_DIR/config.sh" -name "$PROJECT_NAME" -output "$TEMP_DIR"
+"$SCRIPTS_DIR/config.sh" --output "$TEMP_DIR" "$PROJECT_NAME"
 checkresult $? "'config.sh' script failed"
 
 # Check For Dependencies

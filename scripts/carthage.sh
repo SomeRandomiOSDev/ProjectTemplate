@@ -15,7 +15,7 @@ else
     # Workaround for Xcode 12 issue for Carthage versions prior to 0.37.0
     set -euo pipefail
 
-    xcconfig=$(mktemp /tmp/static.xcconfig.XXXXXX)
+    xcconfig=$(mktemp /tmp/static.xcconfig.XXXXXXXX)
     trap 'rm -f "$xcconfig"' INT TERM HUP EXIT
 
     # For Xcode 12 make sure EXCLUDED_ARCHS is set to arm architectures otherwise
