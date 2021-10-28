@@ -1,6 +1,7 @@
 # ProjectTemplate
 
 [![License MIT](https://img.shields.io/badge/license-MIT-success)](https://mit-license.org)
+![Release](https://img.shields.io/github/v/release/SomeRandomiOSDev/ProjectTemplate?display_name=tag&sort=semver)
 
 My custom project template for creating frameworks for iOS, macOS, tvOS and watchOS.
 
@@ -21,10 +22,10 @@ The next step is to navigate into the newly cloned repo and configure it. First 
 ```sh
 cd ProjectTemplate/scripts
 
-./config.sh -name "MyNewFramework"
+./config.sh "MyNewFramework"
 ```
 
-This script first copies the `ProjectTemplate` directory to a directory using the same name that you provided for your project in the same directory where the `ProjectTemplate` directory sits. Next it runs through this copy and substitutes the various placeholders in the file names and within the files themselves with the values provided in the `env.sh` script and with the name provided when running the `config.sh` script. 
+This script first copies the `ProjectTemplate` directory to a directory using the same name that you provided for your project in the same directory where the `ProjectTemplate` directory sits. If need be, you can use the `--output | -o` option to specify a directory in which to create the project. Next it runs through this copy and substitutes the various placeholders in the file names and within the files themselves with the values provided in the `env.sh` script and with the name provided when running the `config.sh` script. 
 
 After the script runs, you now have an empty project pre-configured for building various configurations for all supported platforms. 
 
