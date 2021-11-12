@@ -32,6 +32,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+        DD3BB7212731B47100DB55F8 /* <#TemplateProject#>.docc in Sources */ = {isa = PBXBuildFile; fileRef = DD3BB7202731ADDA00DB55F8 /* <#TemplateProject#>.docc */; };
+        DD3BB7222731B47100DB55F8 /* <#TemplateProject#>.docc in Sources */ = {isa = PBXBuildFile; fileRef = DD3BB7202731ADDA00DB55F8 /* <#TemplateProject#>.docc */; };
+        DD3BB7232731B47200DB55F8 /* <#TemplateProject#>.docc in Sources */ = {isa = PBXBuildFile; fileRef = DD3BB7202731ADDA00DB55F8 /* <#TemplateProject#>.docc */; };
+        DD3BB7242731B47200DB55F8 /* <#TemplateProject#>.docc in Sources */ = {isa = PBXBuildFile; fileRef = DD3BB7202731ADDA00DB55F8 /* <#TemplateProject#>.docc */; };
 		DD86D54723D11B3E0046E63E /* <#TemplateProject#>.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD86D53D23D11B3E0046E63E /* <#TemplateProject#>.framework */; };
 		DD86D57923D11C860046E63E /* <#TemplateProject#>.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD86D57023D11C860046E63E /* <#TemplateProject#>.framework */; };
 		DD86D59523D11CA00046E63E /* <#TemplateProject#>.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD86D58C23D11CA00046E63E /* <#TemplateProject#>.framework */; };
@@ -98,28 +102,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-        DD17A9F9257744BC00D30599 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scripts; sourceTree = "<group>"; };
-        DDA26DBD256EA4D700E1C6D7 /* workflows */ = {isa = PBXFileReference; lastKnownFileType = folder; name = workflows; path = .github/workflows; sourceTree = "<group>"; };
-		DD5D044A261FA56400BA0FC2 /* <#TemplateProject#>Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "<#TemplateProject#>Tests-Info.plist"; path = "Plists/<#TemplateProject#>Tests-Info.plist"; sourceTree = "<group>"; };
-		DD86D53D23D11B3E0046E63E /* <#TemplateProject#>.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = <#TemplateProject#>.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD86D54123D11B3E0046E63E /* <#TemplateProject#>-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "<#TemplateProject#>-Info.plist"; path = "Plists/<#TemplateProject#>-Info.plist"; sourceTree = "<group>"; };
-		DD86D54623D11B3E0046E63E /* <#TemplateProject#>Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = <#TemplateProject#>Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD86D57023D11C860046E63E /* <#TemplateProject#>.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = <#TemplateProject#>.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD86D57823D11C860046E63E /* <#TemplateProject#>Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = <#TemplateProject#>Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD86D58C23D11CA00046E63E /* <#TemplateProject#>.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = <#TemplateProject#>.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD86D59423D11CA00046E63E /* <#TemplateProject#>Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = <#TemplateProject#>Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD86D5C423D11D140046E63E /* <#TemplateProject#>.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = <#TemplateProject#>.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-        DD48BC94270E0DE800D842BC /* <#TemplateProject#>Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = <#TemplateProject#>Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
         DD48BC9F270E0F4500D842BC /* <#TemplateProject#>Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = <#TemplateProject#>Tests.xctestplan; sourceTree = "<group>"; };
         DD48BCA0270E0F9A00D842BC /* <#TemplateProject#> macOS Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "<#TemplateProject#> macOS Tests.xctestplan"; sourceTree = "<group>"; };
         DD48BCA1270E0FE200D842BC /* <#TemplateProject#> tvOS Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "<#TemplateProject#> tvOS Tests.xctestplan"; sourceTree = "<group>"; };
         DD48BCA2270E101D00D842BC /* <#TemplateProject#> watchOS Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "<#TemplateProject#> watchOS Tests.xctestplan"; sourceTree = "<group>"; };
-		DD86D5DE23D22DB90046E63E /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
-		DD86D5DF23D22DB90046E63E /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = SOURCE_ROOT; };
+        DD3BB7202731ADDA00DB55F8 /* <#TemplateProject#>.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = <#TemplateProject#>.docc; sourceTree = "<group>"; };
+        DDA42148273E153D00F2B0BC /* github */ = {isa = PBXFileReference; lastKnownFileType = folder; name = github; path = .github; sourceTree = "<group>"; };
+        DD17A9F9257744BC00D30599 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scripts; sourceTree = "<group>"; };
 		DD86D5E023D22DB90046E63E /* <#TemplateProject#>.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = <#TemplateProject#>.podspec; sourceTree = SOURCE_ROOT; };
-		DD86D5E123D22DB90046E63E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
-		DD86D5E323D22DC30046E63E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
+        DD86D5DF23D22DB90046E63E /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = SOURCE_ROOT; };
 		DDB1DE5C2405EEE300C20FED /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = codecov.yml; sourceTree = "<group>"; };
+        DD86D5E323D22DC30046E63E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
+        DD86D5E123D22DB90046E63E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+        DD86D5DE23D22DB90046E63E /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
+        DD86D54123D11B3E0046E63E /* <#TemplateProject#>-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "<#TemplateProject#>-Info.plist"; path = "Plists/<#TemplateProject#>-Info.plist"; sourceTree = "<group>"; };
+        DD5D044A261FA56400BA0FC2 /* <#TemplateProject#>Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "<#TemplateProject#>Tests-Info.plist"; path = "Plists/<#TemplateProject#>Tests-Info.plist"; sourceTree = "<group>"; };
+        DD86D53D23D11B3E0046E63E /* <#TemplateProject#>.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = <#TemplateProject#>.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+        DD86D54623D11B3E0046E63E /* <#TemplateProject#>Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = <#TemplateProject#>Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+        DD86D57023D11C860046E63E /* <#TemplateProject#>.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = <#TemplateProject#>.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+        DD86D57823D11C860046E63E /* <#TemplateProject#>Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = <#TemplateProject#>Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+        DD86D58C23D11CA00046E63E /* <#TemplateProject#>.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = <#TemplateProject#>.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+        DD86D59423D11CA00046E63E /* <#TemplateProject#>Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = <#TemplateProject#>Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+        DD86D5C423D11D140046E63E /* <#TemplateProject#>.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = <#TemplateProject#>.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+        DD48BC94270E0DE800D842BC /* <#TemplateProject#>Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = <#TemplateProject#>Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +191,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+        DD86D53323D11B3E0046E63E = {
+            isa = PBXGroup;
+            children = (
+                DD86D53F23D11B3E0046E63E /* <#TemplateProject#> */,
+                DD86D53E23D11B3E0046E63E /* Products */,
+            );
+            sourceTree = "<group>";
+        };
+        DD86D53F23D11B3E0046E63E /* <#TemplateProject#> */ = {
+            isa = PBXGroup;
+            children = (
+                DDB1DE252405EE5F00C20FED /* Sources */,
+                DDB1DE502405EE9900C20FED /* Tests */,
+                DD3BB71F2731AD4F00DB55F8 /* Documentation */,
+                DD86D55B23D11BA80046E63E /* Supporting Files */,
+            );
+            name = <#TemplateProject#>;
+            sourceTree = "<group>";
+        };
+        DDB1DE252405EE5F00C20FED /* Sources */ = {
+            isa = PBXGroup;
+            children = (
+                DD5D04E52621361600BA0FC2 /* <#TemplateProject#> */,
+            );
+            path = Sources;
+            sourceTree = "<group>";
+        };
+        DD5D04E52621361600BA0FC2 /* <#TemplateProject#> */ = {
+            isa = PBXGroup;
+            children = (
+            );
+            path = <#TemplateProject#>;
+            sourceTree = "<group>";
+        };
+        DDB1DE502405EE9900C20FED /* Tests */ = {
+            isa = PBXGroup;
+            children = (
+                DD5D04F22621362400BA0FC2 /* <#TemplateProject#>Tests */,
+                DD48BC9E270E0F1300D842BC /* Test Plans */,
+            );
+            path = Tests;
+            sourceTree = "<group>";
+        };
+        DD5D04F22621362400BA0FC2 /* <#TemplateProject#>Tests */ = {
+            isa = PBXGroup;
+            children = (
+            );
+            path = <#TemplateProject#>Tests;
+            sourceTree = "<group>";
+        };
         DD48BC9E270E0F1300D842BC /* Test Plans */ = {
             isa = PBXGroup;
             children = (
@@ -197,58 +252,19 @@
             path = "Test Plans";
             sourceTree = "<group>";
         };
-        DD5D04E52621361600BA0FC2 /* <#TemplateProject#> */ = {
+        DD3BB71F2731AD4F00DB55F8 /* Documentation */ = {
             isa = PBXGroup;
             children = (
+                DD3BB7202731ADDA00DB55F8 /* <#TemplateProject#>.docc */,
             );
-            path = <#TemplateProject#>;
+            path = Documentation;
             sourceTree = "<group>";
         };
-        DD5D04F22621362400BA0FC2 /* <#TemplateProject#>Tests */ = {
-            isa = PBXGroup;
-            children = (
-            );
-            path = <#TemplateProject#>Tests;
-            sourceTree = "<group>";
-        };
-		DD86D53323D11B3E0046E63E = {
-			isa = PBXGroup;
-			children = (
-				DD86D53F23D11B3E0046E63E /* <#TemplateProject#> */,
-				DD86D53E23D11B3E0046E63E /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		DD86D53E23D11B3E0046E63E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				DD86D53D23D11B3E0046E63E /* <#TemplateProject#>.framework */,
-				DD86D54623D11B3E0046E63E /* <#TemplateProject#>Tests.xctest */,
-				DD86D57023D11C860046E63E /* <#TemplateProject#>.framework */,
-				DD86D57823D11C860046E63E /* <#TemplateProject#>Tests.xctest */,
-				DD86D58C23D11CA00046E63E /* <#TemplateProject#>.framework */,
-				DD86D59423D11CA00046E63E /* <#TemplateProject#>Tests.xctest */,
-				DD86D5C423D11D140046E63E /* <#TemplateProject#>.framework */,
-                DD48BC94270E0DE800D842BC /* <#TemplateProject#>Tests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		DD86D53F23D11B3E0046E63E /* <#TemplateProject#> */ = {
-			isa = PBXGroup;
-			children = (
-				DDB1DE252405EE5F00C20FED /* Sources */,
-				DDB1DE502405EE9900C20FED /* Tests */,
-				DD86D55B23D11BA80046E63E /* Supporting Files */,
-			);
-			name = <#TemplateProject#>;
-			sourceTree = "<group>";
-		};
 		DD86D55B23D11BA80046E63E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+                DDA42148273E153D00F2B0BC /* github */,
                 DD17A9F9257744BC00D30599 /* scripts */,
-                DDA26DBD256EA4D700E1C6D7 /* workflows */,
 				DD86D5E023D22DB90046E63E /* <#TemplateProject#>.podspec */,
 				DD86D5DF23D22DB90046E63E /* Package.swift */,
 				DDB1DE5C2405EEE300C20FED /* codecov.yml */,
@@ -261,23 +277,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		DDB1DE252405EE5F00C20FED /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-                DD5D04E52621361600BA0FC2 /* <#TemplateProject#> */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		DDB1DE502405EE9900C20FED /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-                DD5D04F22621362400BA0FC2 /* <#TemplateProject#>Tests */,
-                DD48BC9E270E0F1300D842BC /* Test Plans */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
+        DD86D53E23D11B3E0046E63E /* Products */ = {
+            isa = PBXGroup;
+            children = (
+                DD86D53D23D11B3E0046E63E /* <#TemplateProject#>.framework */,
+                DD86D54623D11B3E0046E63E /* <#TemplateProject#>Tests.xctest */,
+                DD86D57023D11C860046E63E /* <#TemplateProject#>.framework */,
+                DD86D57823D11C860046E63E /* <#TemplateProject#>Tests.xctest */,
+                DD86D58C23D11CA00046E63E /* <#TemplateProject#>.framework */,
+                DD86D59423D11CA00046E63E /* <#TemplateProject#>Tests.xctest */,
+                DD86D5C423D11D140046E63E /* <#TemplateProject#>.framework */,
+                DD48BC94270E0DE800D842BC /* <#TemplateProject#>Tests.xctest */,
+            );
+            name = Products;
+            sourceTree = "<group>";
+        };
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -466,49 +480,49 @@
 		DD86D53423D11B3E0046E63E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1300;
-				LastUpgradeCheck = 1300;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
 				ORGANIZATIONNAME = <#TemplateUsername#>;
 				TargetAttributes = {
 					DD86D53C23D11B3E0046E63E = {
-						CreatedOnToolsVersion = 13.0;
-                        LastSwiftMigration = 1300;
+						CreatedOnToolsVersion = 13.1;
+                        LastSwiftMigration = 1310;
 					};
 					DD86D54523D11B3E0046E63E = {
-						CreatedOnToolsVersion = 13.0;
-                        LastSwiftMigration = 1300;
+						CreatedOnToolsVersion = 13.1;
+                        LastSwiftMigration = 1310;
 					};
 					DD86D56F23D11C860046E63E = {
-						CreatedOnToolsVersion = 13.0;
-                        LastSwiftMigration = 1300;
+						CreatedOnToolsVersion = 13.1;
+                        LastSwiftMigration = 1310;
 					};
 					DD86D57723D11C860046E63E = {
-						CreatedOnToolsVersion = 13.0;
-                        LastSwiftMigration = 1300;
+						CreatedOnToolsVersion = 13.1;
+                        LastSwiftMigration = 1310;
 					};
 					DD86D58B23D11CA00046E63E = {
-						CreatedOnToolsVersion = 13.0;
-                        LastSwiftMigration = 1300;
+						CreatedOnToolsVersion = 13.1;
+                        LastSwiftMigration = 1310;
 					};
 					DD86D59323D11CA00046E63E = {
-						CreatedOnToolsVersion = 13.0;
-                        LastSwiftMigration = 1300;
+						CreatedOnToolsVersion = 13.1;
+                        LastSwiftMigration = 1310;
 					};
 					DD86D5C323D11D140046E63E = {
-                        CreatedOnToolsVersion = 13.0;
-                        LastSwiftMigration = 1300;
+                        CreatedOnToolsVersion = 13.1;
+                        LastSwiftMigration = 1310;
 					};
                     DD48BC93270E0DE800D842BC = {
-                        CreatedOnToolsVersion = 13.0;
-                        LastSwiftMigration = 1300;
+                        CreatedOnToolsVersion = 13.1;
+                        LastSwiftMigration = 1310;
                     };
                     DD86D56423D11C4B0046E63E = {
-                        CreatedOnToolsVersion = 13.0;
-                        LastSwiftMigration = 1300;
+                        CreatedOnToolsVersion = 13.1;
+                        LastSwiftMigration = 1310;
                     };
                     DD2FBC27258BE8BB00DB3211 = {
-                        CreatedOnToolsVersion = 13.0;
-                        LastSwiftMigration = 1300;
+                        CreatedOnToolsVersion = 13.1;
+                        LastSwiftMigration = 1310;
                     };
 				};
 			};
@@ -615,7 +629,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+            shellScript = "if (echo \"$SKIP_SWIFTLINT\" | grep -iq \"^YES$\"); then\n    echo \"SKIP_SWIFTLINT=YES | Skipping SwiftLint\"\nelse\n    if which swiftlint >/dev/null; then\n        swiftlint\n    else\n        echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n    fi\nfi\n";
 		};
         DD2FBC33258BE8C600DB3211 /* Build XCFramework */ = {
             isa = PBXShellScriptBuildPhase;
@@ -642,6 +656,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+                DD3BB7212731B47100DB55F8 /* <#TemplateProject#>.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,6 +671,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+                DD3BB7222731B47100DB55F8 /* <#TemplateProject#>.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,6 +686,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+                DD3BB7232731B47200DB55F8 /* <#TemplateProject#>.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,6 +701,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+                DD3BB7242731B47200DB55F8 /* <#TemplateProject#>.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -923,6 +941,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.<#templateusername#>.<#templateproject#>;
 				PRODUCT_NAME = <#TemplateProject#>;
+                RUN_DOCUMENTATION_COMPILER = YES;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -949,6 +968,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.<#templateusername#>.<#templateproject#>;
 				PRODUCT_NAME = <#TemplateProject#>;
+                RUN_DOCUMENTATION_COMPILER = YES;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,6";
@@ -1009,6 +1029,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.<#templateusername#>.<#templateproject#>;
 				PRODUCT_NAME = <#TemplateProject#>;
+                RUN_DOCUMENTATION_COMPILER = YES;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1036,6 +1057,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.<#templateusername#>.<#templateproject#>;
 				PRODUCT_NAME = <#TemplateProject#>;
+                RUN_DOCUMENTATION_COMPILER = YES;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1102,6 +1124,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.<#templateusername#>.<#templateproject#>;
 				PRODUCT_NAME = <#TemplateProject#>;
+                RUN_DOCUMENTATION_COMPILER = YES;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1129,6 +1152,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.<#templateusername#>.<#templateproject#>;
 				PRODUCT_NAME = <#TemplateProject#>;
+                RUN_DOCUMENTATION_COMPILER = YES;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1197,6 +1221,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.<#templateusername#>.<#templateproject#>;
 				PRODUCT_NAME = <#TemplateProject#>;
+                RUN_DOCUMENTATION_COMPILER = YES;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1225,6 +1250,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.<#templateusername#>.<#templateproject#>;
 				PRODUCT_NAME = <#TemplateProject#>;
+                RUN_DOCUMENTATION_COMPILER = YES;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;

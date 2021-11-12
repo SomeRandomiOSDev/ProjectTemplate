@@ -16,25 +16,28 @@ EXIT_CODE=0
 
 function printhelp() {
     local HELP="Configure a new framework project using this workspace as a template.\n\n"
-    HELP+="config.sh [--help | -h] [--verbose | -v] [--dryrun | -t] [(--output | -o) <output_folder>] project_name\n"
+    HELP+="config.sh [--help | -h] [--verbose | -v] [--dryrun | -t] [--open-project]\n"
+    HELP+="          [(--output | -o) <output_folder>] <project_name>\n"
     HELP+="\n"
     HELP+="FLAGS:\n"
     HELP+="\n"
-    HELP+="--help, -h)    Print this help message and exit.\n"
+    HELP+="--help, -h)     Print this help message and exit.\n"
     HELP+="\n"
-    HELP+="--dryrun, -t)  Run as if a new project was being configured with the given\n"
-    HELP+="               inputs without actually creating the project. This flag\n"
-    HELP+="               implicitly sets the --verbose flag.\n"
+    HELP+="--verbose, -v)  Enable verbose logging.\n"
     HELP+="\n"
-    HELP+="--verbose, -v) Enable verbose logging.\n"
+    HELP+="--dryrun, -t)   Run as if a new project was being configured with the given\n"
+    HELP+="                inputs without actually creating the project. This flag\n"
+    HELP+="                implicitly sets the --verbose flag.\n"
     HELP+="\n"
-    HELP+="--output, -o)  The folder in which to write the newly configured project to. If\n"
-    HELP+="               not specified this defaults to folder containing this template\n"
-    HELP+="               project (i.e. \"$(dirname $0)/../../\")\n"
+    HELP+="--open-project) Open the newly created project after configuring it.\n"
+    HELP+="\n"
+    HELP+="--output, -o)   The folder in which to write the newly configured project to. If\n"
+    HELP+="                not specified this defaults to folder containing this template\n"
+    HELP+="                project (i.e. \"$(dirname $0)/../../\").\n"
     HELP+="\n"
     HELP+="ARGUMENTS:\n"
     HELP+="\n"
-    HELP+="project_name:  The name of the project to create.\n"
+    HELP+="project_name:   The name of the project to create.\n"
 
     IFS='%'
     echo -e $HELP 1>&2
@@ -47,12 +50,6 @@ function printhelp() {
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
-        --output | -o)
-        OUTPUT_DIR="$2"
-        shift # -output
-        shift # <output_folder>
-        ;;
-
         --help | -h)
         printhelp
         ;;
@@ -60,24 +57,35 @@ while [[ $# -gt 0 ]]; do
         --dryrun | -t)
         DRYRUN=1
         VERBOSE=1
-        shift # -test
+        shift # --dryrun | -t
         ;;
 
         --verbose | -v)
         VERBOSE=1
-        shift # -verbose
+        shift # --verbose | -v
+        ;;
+
+        --open-project)
+        OPEN_PROJECT=1
+        shift # --open-project
+        ;;
+
+        --output | -o)
+        OUTPUT_DIR="$2"
+        shift # --output | -o
+        shift # <output_folder>
         ;;
 
         *)
         if [[ $1 == -* ]]; then # argument starts with "-"
-            echo -e "Unknown argument: $1\n" 1>&2
+            "$SCRIPTS_DIR/printformat.sh" "foreground:red" "Unknown argument: $1\n" 1>&2
             EXIT_CODE=1
             printhelp
         elif [ -z ${PROJECT_NAME+x} ]; then
             PROJECT_NAME="$1"
             shift # <project_name>
         else
-            echo -e "Unexpected positional argument: $1\n" 1>&2
+            "$SCRIPTS_DIR/printformat.sh" "foreground:red" "Unexpected positional argument: $1\n" 1>&2
             EXIT_CODE=1
             printhelp
         fi
@@ -86,7 +94,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [ -z ${PROJECT_NAME+x} ]; then
-    echo -e "Missing `project_name` positional argument\n" 1>&2
+    "$SCRIPTS_DIR/printformat.sh" "foreground:red" "Missing <project_name> positional argument\n" 1>&2
     EXIT_CODE=1
     printhelp
 fi
@@ -106,6 +114,8 @@ source "$SCRIPTS_DIR/env.sh"
 function cleanup() {
     if [[ "$DRYRUN" == "1" ]] || [[ "$EXIT_CODE" != "0" ]]; then
         rm -rf "$PROJECT_DIR"
+    elif [[ "$OPEN_PROJECT" == "1" ]] && [[ "$EXIT_CODE" == "0" ]]; then
+        open -a Xcode "$PROJECT_DIR/$PROJECT_NAME.xcodeproj"
     fi
 
     if [ "${#EXIT_MESSAGE}" != 0 ]; then
@@ -122,7 +132,7 @@ function cleanup() {
 function checkresult() {
     if [ "$1" != "0" ]; then
         if [ "${#2}" != "0" ]; then
-            EXIT_MESSAGE="\033[31m$2\033[0m"
+            EXIT_MESSAGE="$("$SCRIPTS_DIR/printformat.sh" "foreground:red" "$2")"
         else
             EXIT_MESSAGE="**printhelp**"
         fi
@@ -218,10 +228,10 @@ if [ ! -e "$PROJECT_DIR" ]; then
     rm -rf "$PROJECT_DIR/.git"
     checkresult $? "$ERROR_MESSAGE"
 
-    rm -rf "$PROJECT_DIR/.github/workflows"
+    rm -rf "$PROJECT_DIR/.github"
     checkresult $? "$ERROR_MESSAGE"
 
-    mv "$PROJECT_DIR/workflows" "$PROJECT_DIR/.github/workflows"
+    mv "$PROJECT_DIR/github" "$PROJECT_DIR/.github"
     checkresult $? "$ERROR_MESSAGE"
 
     find "$PROJECT_DIR" -regex ".*\.gitkeep" -delete

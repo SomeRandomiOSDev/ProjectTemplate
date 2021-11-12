@@ -27,7 +27,11 @@ cd ProjectTemplate/scripts
 
 This script first copies the `ProjectTemplate` directory to a directory using the same name that you provided for your project in the same directory where the `ProjectTemplate` directory sits. If need be, you can use the `--output | -o` option to specify a directory in which to create the project. Next it runs through this copy and substitutes the various placeholders in the file names and within the files themselves with the values provided in the `env.sh` script and with the name provided when running the `config.sh` script. 
 
-After the script runs, you now have an empty project pre-configured for building various configurations for all supported platforms. 
+After the script runs, you now have an empty project pre-configured for building various configurations for all supported platforms.
+
+## Contributing
+
+Whether it's submitting a feature request, reporting a bug, or writing code yourself, all contributions to this project are welcome! Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for more information on how you can contribute. 
 
 ## Author
 

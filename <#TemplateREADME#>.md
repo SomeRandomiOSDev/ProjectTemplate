@@ -7,12 +7,13 @@
 [![Platform](https://img.shields.io/cocoapods/p/<#TemplateProject#>.svg)](https://cocoapods.org/pods/<#TemplateProject#>)
 [![Code Coverage](https://codecov.io/gh/<#TemplateUsername#>/<#TemplateProject#>/branch/master/graph/badge.svg)](https://codecov.io/gh/<#TemplateUsername#>/<#TemplateProject#>)
 
-![Carthage](https://github.com/<#TemplateUsername#>/<#TemplateProject#>/workflows/Carthage/badge.svg)
-![Cocoapods](https://github.com/<#TemplateUsername#>/<#TemplateProject#>/workflows/Cocoapods/badge.svg)
-![Swift Package](https://github.com/<#TemplateUsername#>/<#TemplateProject#>/workflows/Swift%20Package/badge.svg)
-![SwiftLint](https://github.com/<#TemplateUsername#>/<#TemplateProject#>/actions/workflows/swiftlint.yml/badge.svg)
-![XCFramework](https://github.com/<#TemplateUsername#>/<#TemplateProject#>/actions/workflows/xcframework.yml/badge.svg)
-![Xcode Project](https://github.com/<#TemplateUsername#>/<#TemplateProject#>/workflows/Xcode%20Project/badge.svg)
+[![Carthage](https://github.com/<#TemplateUsername#>/<#TemplateProject#>/actions/workflows/carthage.yml/badge.svg)](https://github.com/<#TemplateUsername#>/<#TemplateProject#>/actions/workflows/carthage.yml)
+[![Cocoapods](https://github.com/<#TemplateUsername#>/<#TemplateProject#>/actions/workflows/cocoapods.yml/badge.svg)](https://github.com/<#TemplateUsername#>/<#TemplateProject#>/actions/workflows/cocoapods.yml)
+[![Documentation](https://github.com/<#TemplateUsername#>/<#TemplateProject#>/actions/workflows/documentation.yml/badge.svg)](https://github.com/<#TemplateUsername#>/<#TemplateProject#>/actions/workflows/documentation.yml)
+[![Swift Package](https://github.com/<#TemplateUsername#>/<#TemplateProject#>/actions/workflows/swift-package.yml/badge.svg)](https://github.com/<#TemplateUsername#>/<#TemplateProject#>/actions/workflows/swift-package.yml)
+[![SwiftLint](https://github.com/<#TemplateUsername#>/<#TemplateProject#>/actions/workflows/swiftlint.yml/badge.svg)](https://github.com/<#TemplateUsername#>/<#TemplateProject#>/actions/workflows/swiftlint.yml)
+[![XCFramework](https://github.com/<#TemplateUsername#>/<#TemplateProject#>/actions/workflows/xcframework.yml/badge.svg)](https://github.com/<#TemplateUsername#>/<#TemplateProject#>/actions/workflows/xcframework.yml)
+[![Xcode Project](https://github.com/<#TemplateUsername#>/<#TemplateProject#>/actions/workflows/xcodebuild.yml/badge.svg)](https://github.com/<#TemplateUsername#>/<#TemplateProject#>/actions/workflows/xcodebuild.yml)
 
 <#Summary#>
 
@@ -50,7 +51,7 @@ import <#TemplateProject#>
 
 ## Contributing
 
-If you have need for a specific feature or you encounter a bug, please open an issue. If you extend the functionality of **<#TemplateProject#>** yourself or you feel like fixing a bug yourself, please submit a pull request.
+Whether it's submitting a feature request, reporting a bug, or writing code yourself, all contributions to this library are welcome! Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for more information on how you can contribute.
 
 ## Author
 
