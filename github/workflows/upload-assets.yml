@@ -4,7 +4,7 @@ on:
     types: [published]
 
 jobs:
-  build:
+  xcframework:
     name: Upload XCFramework Assets
     runs-on: macOS-latest
     env:
@@ -62,6 +62,7 @@ jobs:
 
 
 
+  documentation:
     name: Upload Documentation Assets
     runs-on: macOS-11
     env:

@@ -8,8 +8,10 @@ on:
       - '**'
     paths-ignore:
       - '.gitignore'
+      - 'github'
       - 'LICENSE'
       - 'README.md'
+      - '<#TemplateREADME#>.md'
 
 jobs:
   test:
