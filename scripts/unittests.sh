@@ -23,9 +23,11 @@ EXIT_MESSAGE=""
 
 function printhelp() {
     local HELP="Run 'ProjectTemplate' unit tests.\n\n"
-    HELP+="unittests.sh [--help | -h] [--no-clean | --no-clean-on-fail]\n"
+    HELP+="unittests.sh [--help | -h] [--verbose] [--no-clean | --no-clean-on-fail]\n"
     HELP+="\n"
     HELP+="--help, -h)         Print this help message and exit.\n"
+    HELP+="\n"
+    HELP+="--verbose)          Enable verbose logging.\n"
     HELP+="\n"
     HELP+="--no-clean)         Never clean up the temporary project created to run these\n"
     HELP+="                    tests upon completion.\n"
@@ -55,9 +57,20 @@ while [[ $# -gt 0 ]]; do
         shift # --no-clean-on-fail
         ;;
 
-        *)
-        echo -e "Unknown argument: $1\n" 1>&2
+        --verbose)
+        VERBOSE=1
+        shift # --verbose
+        ;;
+
+        --help | -h)
         printhelp
+        ;;
+
+        *)
+        "$SCRIPTS_DIR/printformat.sh" "foreground:red" "Unknown argument: $1\n" 1>&2
+        EXIT_CODE=1
+        printhelp
+        ;;
     esac
 done
 
@@ -79,7 +92,7 @@ function cleanup() {
 
 function checkresult() {
     if [ "$1" != "0" ]; then
-        EXIT_MESSAGE="\033[31m$2\033[0m"
+        EXIT_MESSAGE="$("$SCRIPTS_DIR/printformat.sh" "foreground:red" "$2")"
         EXIT_CODE=$1
 
         cleanup
@@ -87,14 +100,19 @@ function checkresult() {
 }
 
 function printstep() {
-    echo -e "\033[32m$1\033[0m"
+    "$SCRIPTS_DIR/printformat.sh" "foreground:green" "$1"
 }
 
 # Run Config
 
 printstep "Setting Up Test Project..."
 
-"$SCRIPTS_DIR/config.sh" --output "$TEMP_DIR" "$PROJECT_NAME"
+ARGS=()
+if [ "$VERBOSE" == "1" ]; then
+    ARGS+=(--verbose)
+fi
+
+"$SCRIPTS_DIR/config.sh" --output "$TEMP_DIR" "$PROJECT_NAME" "${ARGS[@]}"
 checkresult $? "'config.sh' script failed"
 
 # Check For Dependencies
@@ -104,7 +122,7 @@ printstep "Checking for Configuration Dependencies..."
 if which xcodeproj >/dev/null; then
     echo "Xcodeproj: $(xcodeproj --version)"
 else
-    checkresult -1 "'xcodeproj' Ruby Gem is not installed and is required for running unit tests: \033[4;34mhttps://rubygems.org/gems/xcodeproj"
+    checkresult -1 "'xcodeproj' Ruby Gem is not installed and is required for running unit tests: $("$SCRIPTS_DIR/printformat.sh" "foreground:blue;underline" "https://rubygems.org/gems/xcodeproj")"
 fi
 
 ### Add Sources To Project
@@ -119,7 +137,7 @@ checkresult $? "Unable to configure the test project for testing"
 
 # Run Tests
 
-ARGS=(--is-running-in-temp-env --project-name "$PROJECT_NAME")
+ARGS+=(--is-running-in-temp-env --project-name "$PROJECT_NAME")
 
 if [ "$NO_CLEAN" == "1" ]; then
     ARGS+=(--no-clean)

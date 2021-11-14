@@ -1,12 +1,12 @@
 Pod::Spec.new do |s|
-  
+
   s.name         = "<#TemplateProject#>"
   s.version      = "0.1.0"
   s.summary      = "<#Summary#>"
   s.description  = <<-DESC
                    <#Description#>
                    DESC
-  
+
   s.homepage     = "https://github.com/<#TemplateUsername#>/<#TemplateProject#>"
   s.license      = "MIT"
   s.author       = { "<#TemplateName#>" => "<#TemplateEmail#>" }
@@ -20,5 +20,5 @@ Pod::Spec.new do |s|
   s.source_files      = 'Sources/<#TemplateProject#>/*.swift'
   s.swift_versions    = ['5.0']
   s.cocoapods_version = '>= 1.7.3'
-  
+
 end
