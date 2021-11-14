@@ -186,10 +186,6 @@ else
     fi
 fi
 
-# Create Temporary Directory
-
-TEMP_DIR="$(mktemp -d -t ".$(echo "$PROJECT_NAME" | tr '[:upper:]' '[:lower:]').xcframework.build")"
-
 # Function Declarations
 
 function cleanup() {
