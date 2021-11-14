@@ -19,7 +19,7 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: macOS-latest
+    runs-on: macOS-11
     env:
       LOGSDIR: /tmp/.<#templateproject#>.swiftpm/Logs/Build
 
@@ -45,7 +45,7 @@ jobs:
 
   test:
     name: Test
-    runs-on: macOS-latest
+    runs-on: macOS-11
     needs: build
     env:
       LOGSDIR: /tmp/.<#templateproject#>.swiftpm/Logs/Test

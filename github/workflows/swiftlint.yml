@@ -14,7 +14,7 @@ on:
 jobs:
   build:
     name: Run SwiftLint
-    runs-on: macOS-latest
+    runs-on: macOS-11
 
     steps:
     - name: Checkout Code

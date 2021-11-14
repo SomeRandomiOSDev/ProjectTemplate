@@ -22,7 +22,7 @@ on:
 jobs:
   ios:
     name: iOS
-    runs-on: macOS-latest
+    runs-on: macOS-11
     env:
       LOGSDIR: /tmp/.<#templateproject#>.xcodebuild/iOS/Logs
 
@@ -60,7 +60,7 @@ jobs:
 
   maccatalyst:
     name: Mac Catalyst
-    runs-on: macOS-latest
+    runs-on: macOS-11
     env:
       LOGSDIR: /tmp/.<#templateproject#>.xcodebuild/macCatalyst/Logs
 
@@ -89,7 +89,7 @@ jobs:
 
   macos:
     name: macOS
-    runs-on: macOS-latest
+    runs-on: macOS-11
     env:
       LOGSDIR: /tmp/.<#templateproject#>.xcodebuild/macOS/Logs
 
@@ -118,7 +118,7 @@ jobs:
 
   tvos:
     name: tvOS
-    runs-on: macOS-latest
+    runs-on: macOS-11
     env:
       LOGSDIR: /tmp/.<#templateproject#>.xcodebuild/tvOS/Logs
 
