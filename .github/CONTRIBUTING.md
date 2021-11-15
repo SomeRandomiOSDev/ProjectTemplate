@@ -8,13 +8,13 @@ There are three main ways in which you contribute:
 
 1. Open a [Bug Report](https://github.com/SomeRandomiOSDev/ProjectTemplate/issues/new?assignees=SomeRandomiOSDev&labels=bug&template=BUG_REPORT.yml&title=%5BBUG%5D%3A+).
 2. Open a [Feature Request](https://github.com/SomeRandomiOSDev/ProjectTemplate/issues/new?assignees=SomeRandomiOSDev&labels=enhancement&template=FEATURE_REQUEST.yml&title=%5BFEATURE%5D%3A+).
-3. Create a [Pull Request](https://github.com/SomeRandomiOSDev/ProjectTemplate/compare/main...main?expand=1&template=PULL_REQUEST_TEMPLATE.md).
+3. Create a [Pull Request](https://github.com/SomeRandomiOSDev/ProjectTemplate/compare).
 
 > If none of these really suit your needs, you could also open a [blank issue](https://github.com/SomeRandomiOSDev/ProjectTemplate/issues/new).
 
 If you need further guidance or have additional questions, you can always reach out at
 
-- somerandomiosdev@gmail.com
+* somerandomiosdev@gmail.com
 
 Please also note we have a [code of conduct](#code-of-conduct), please follow it in all your interactions with the project.
 
@@ -26,10 +26,10 @@ For contributing via *Bug Reports* or *Feature Requests* contribuing is as simpl
 
 For contributing via *Pull Requests*, we ask the following of you prior to opening a `pull request` to help maintain code standards and quality:
 
-- Please try and follow the implicit code conventions and naming schemes present within the project.
-- For variables specific to projects configured with this template, please follow the template naming scheme used throughout this project (e.g. <#TemplateProject#>).
+* Please try and follow the implicit code conventions and naming schemes present within the project.
+* For variables specific to projects configured with this template, please follow the template naming scheme used throughout this project (e.g. <#TemplateProject#>).
 
-For further guidance about requirements for `pull requests`, please see the [Pull Request Guidelines](PULL_REQUEST_TEMPLATE/PULL_REQUEST_TEMPLATE.md) document.
+For further guidance about requirements for `pull requests`, please see the [Pull Request Guidelines](PULL_REQUEST_TEMPLATE.md) document.
 
 ## Code of Conduct
 

@@ -7,10 +7,9 @@
 
 SCRIPT="$("$(dirname "$0")/resolvepath.sh" "$0")"
 SCRIPTS_DIR="$(dirname "$SCRIPT")"
-ROOT_DIR="$(dirname "$SCRIPTS_DIR")"
 
 TEMP_DIR="$(mktemp -d)"
-PROJECT_NAME="$(basename "$(mktemp -u $TEMP_DIR/ProjectTemplateUnitTests_XXXXXXXX)")"
+PROJECT_NAME="$(basename "$(mktemp -u "$TEMP_DIR/ProjectTemplateUnitTests_XXXXXXXX")")"
 OUTPUT_DIR="$TEMP_DIR/$PROJECT_NAME"
 
 NO_CLEAN=0
@@ -37,7 +36,7 @@ function printhelp() {
     HELP+="                    exclusive with --no-clean with --no-clean taking precedence.\n"
 
     IFS='%'
-    echo -e $HELP 1>&2
+    echo -e "$HELP" 1>&2
     unset IFS
 
     exit $EXIT_CODE

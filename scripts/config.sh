@@ -33,14 +33,14 @@ function printhelp() {
     HELP+="\n"
     HELP+="--output, -o)   The folder in which to write the newly configured project to. If\n"
     HELP+="                not specified this defaults to folder containing this template\n"
-    HELP+="                project (i.e. \"$(dirname $0)/../../\").\n"
+    HELP+="                project (i.e. \"$(dirname "$0")/../../\").\n"
     HELP+="\n"
     HELP+="ARGUMENTS:\n"
     HELP+="\n"
     HELP+="project_name:   The name of the project to create.\n"
 
     IFS='%'
-    echo -e $HELP 1>&2
+    echo -e "$HELP" 1>&2
     unset IFS
 
     exit $EXIT_CODE
@@ -207,32 +207,26 @@ if [ ! -e "$PROJECT_DIR" ]; then
     cp -R "${ROOT_DIR%/}/" "$PROJECT_DIR"
     checkresult $? "$ERROR_MESSAGE"
 
-    NEW_SCRIPTS_DIR="$PROJECT_DIR/$(basename "$SCRIPTS_DIR")"
-    NEW_SCRIPT="$NEW_SCRIPTS_DIR/$(basename "$SCRIPT")"
+    #
 
-    rm -f "$NEW_SCRIPT"
-    checkresult $? "$ERROR_MESSAGE"
+    for SCRIPT in "config.sh" "env.sh" "unittests.sh" "unittests.rb"; do
+        rm -f "$PROJECT_DIR/$(basename "$SCRIPTS_DIR")/$SCRIPT"
+        checkresult $? "$ERROR_MESSAGE"
+    done
 
-    rm -f "$NEW_SCRIPTS_DIR/env.sh"
-    checkresult $? "$ERROR_MESSAGE"
+    for FILE in "README.md" ".remarkrc" ".git" ".github"; do
+        rm -rf "$PROJECT_DIR/$FILE"
+        checkresult $? "$ERROR_MESSAGE"
+    done
 
-    rm -f "$NEW_SCRIPTS_DIR/unittests.sh"
-    checkresult $? "$ERROR_MESSAGE"
+    for REPLACEMENT in "README.md" ".remarkrc" ".github"; do
+        mv "$PROJECT_DIR/Replacements/$REPLACEMENT" "$PROJECT_DIR/$REPLACEMENT"
+        checkresult $? "$ERROR_MESSAGE"
+    done
 
-    rm -f "$NEW_SCRIPTS_DIR/unittests.rb"
-    checkresult $? "$ERROR_MESSAGE"
+    rm -rf "$PROJECT_DIR/Replacements"
 
-    rm -f "$PROJECT_DIR/README.md"
-    checkresult $? "$ERROR_MESSAGE"
-
-    rm -rf "$PROJECT_DIR/.git"
-    checkresult $? "$ERROR_MESSAGE"
-
-    rm -rf "$PROJECT_DIR/.github"
-    checkresult $? "$ERROR_MESSAGE"
-
-    mv "$PROJECT_DIR/github" "$PROJECT_DIR/.github"
-    checkresult $? "$ERROR_MESSAGE"
+    #
 
     find "$PROJECT_DIR" -regex ".*\.gitkeep" -delete
     checkresult $? "$ERROR_MESSAGE"
@@ -247,11 +241,10 @@ fi
 function rename_placeholder_files() {
     local IFS=$'\n'
     local FILES=($(find "$PROJECT_DIR" -regex ".*$1.*"))
-    local COUNT=${#FILES[@]}
 
     while [ ${#FILES[@]} -gt 0 ]; do
         for FILE in "${FILES[@]}"; do
-            local NEW_FILE="$(echo "$FILE" | sed "s/$1/$2/g")"
+            local NEW_FILE="${FILE//$1/$2}"
 
             if [ "$VERBOSE" = "1" ]; then
                 echo "Renaming \"$FILE\" to \"$NEW_FILE\""
@@ -275,7 +268,6 @@ function rename_placeholder_files() {
 rename_placeholder_files "<#templateproject#>" "$(lower "$PROJECT_NAME")"
 rename_placeholder_files "<#TemplateProject#>" "$PROJECT_NAME"
 rename_placeholder_files "<#TEMPLATEPROJECT#>" "$(upper "$PROJECT_NAME")"
-rename_placeholder_files "<#TemplateREADME#>" "README"
 
 # Replace placeholders in files
 

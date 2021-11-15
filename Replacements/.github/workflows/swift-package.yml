@@ -10,6 +10,7 @@ on:
       - '.github/**' # Ignore all files under '.github'
       - '!.github/workflows/swift-package.yml' # Except for this workflow
       - '.gitignore'
+      - '.remarkrc'
       - '.swiftlint.yml'
       - 'Documentation/**'
       - 'LICENSE'
