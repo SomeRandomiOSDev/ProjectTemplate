@@ -12,10 +12,10 @@ A brief description of your `pull request`.
 
 Ensure that your `pull request` has followed all the steps below:
 
-- [ ] Added new unit tests, if applicable.
-- [ ] Extended the documentation (including README), if applicable.
-- [ ] Ran [unittests.sh](../../scripts/unittests.sh) and passed.
-- [ ] Added myself to the [CONTRIBUTORS](../CONTRIBUTORS.md) file.
+* [ ] Added new unit tests, if applicable.
+* [ ] Extended the documentation (including README), if applicable.
+* [ ] Ran [unittests.sh](../../scripts/unittests.sh) and passed.
+* [ ] Added myself to the [CONTRIBUTORS](../CONTRIBUTORS.md) file.
 
 ## Proposed changes
 

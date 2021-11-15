@@ -107,16 +107,16 @@
         DD48BCA1270E0FE200D842BC /* <#TemplateProject#> tvOS Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "<#TemplateProject#> tvOS Tests.xctestplan"; sourceTree = "<group>"; };
         DD48BCA2270E101D00D842BC /* <#TemplateProject#> watchOS Tests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "<#TemplateProject#> watchOS Tests.xctestplan"; sourceTree = "<group>"; };
         DD3BB7202731ADDA00DB55F8 /* <#TemplateProject#>.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = <#TemplateProject#>.docc; sourceTree = "<group>"; };
+        DD438A462742D18A00F0A1F6 /* Plists */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Plists; sourceTree = "<group>"; };
         DDA42148273E153D00F2B0BC /* github */ = {isa = PBXFileReference; lastKnownFileType = folder; name = github; path = .github; sourceTree = "<group>"; };
         DD17A9F9257744BC00D30599 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scripts; sourceTree = "<group>"; };
-		DD86D5E023D22DB90046E63E /* <#TemplateProject#>.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = <#TemplateProject#>.podspec; sourceTree = SOURCE_ROOT; };
-        DD86D5DF23D22DB90046E63E /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = SOURCE_ROOT; };
+		DD86D5E023D22DB90046E63E /* <#TemplateProject#>.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = <#TemplateProject#>.podspec; sourceTree = "<group>"; };
+        DD86D5DF23D22DB90046E63E /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		DDB1DE5C2405EEE300C20FED /* codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = codecov.yml; sourceTree = "<group>"; };
-        DD86D5E323D22DC30046E63E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
-        DD86D5E123D22DB90046E63E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
-        DD86D5DE23D22DB90046E63E /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
-        DD86D54123D11B3E0046E63E /* <#TemplateProject#>-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "<#TemplateProject#>-Info.plist"; path = "Plists/<#TemplateProject#>-Info.plist"; sourceTree = "<group>"; };
-        DD5D044A261FA56400BA0FC2 /* <#TemplateProject#>Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "<#TemplateProject#>Tests-Info.plist"; path = "Plists/<#TemplateProject#>Tests-Info.plist"; sourceTree = "<group>"; };
+        DD438A452742CFD900F0A1F6 /* .remarkrc */ = {isa = PBXFileReference; explicitFileType = text.json; path = .remarkrc; sourceTree = "<group>"; };
+        DD86D5E323D22DC30046E63E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+        DD86D5E123D22DB90046E63E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+        DD86D5DE23D22DB90046E63E /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
         DD86D53D23D11B3E0046E63E /* <#TemplateProject#>.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = <#TemplateProject#>.framework; sourceTree = BUILT_PRODUCTS_DIR; };
         DD86D54623D11B3E0046E63E /* <#TemplateProject#>Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = <#TemplateProject#>Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
         DD86D57023D11C860046E63E /* <#TemplateProject#>.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = <#TemplateProject#>.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -263,16 +263,16 @@
 		DD86D55B23D11BA80046E63E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+                DD438A462742D18A00F0A1F6 /* Plists */,
                 DDA42148273E153D00F2B0BC /* github */,
                 DD17A9F9257744BC00D30599 /* scripts */,
 				DD86D5E023D22DB90046E63E /* <#TemplateProject#>.podspec */,
 				DD86D5DF23D22DB90046E63E /* Package.swift */,
 				DDB1DE5C2405EEE300C20FED /* codecov.yml */,
+                DD438A452742CFD900F0A1F6 /* .remarkrc */,
 				DD86D5E323D22DC30046E63E /* .swiftlint.yml */,
 				DD86D5E123D22DB90046E63E /* README.md */,
 				DD86D5DE23D22DB90046E63E /* LICENSE */,
-				DD86D54123D11B3E0046E63E /* <#TemplateProject#>-Info.plist */,
-				DD5D044A261FA56400BA0FC2 /* <#TemplateProject#>Tests-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

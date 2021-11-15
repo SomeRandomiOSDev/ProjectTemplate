@@ -8,10 +8,11 @@ on:
       - '**'
     paths-ignore:
       - '.gitignore'
-      - 'github'
+      - '.remarkrc'
+      - 'codecov.yml'
       - 'LICENSE'
       - 'README.md'
-      - '<#TemplateREADME#>.md'
+      - 'Replacements/**'
 
 jobs:
   test:
