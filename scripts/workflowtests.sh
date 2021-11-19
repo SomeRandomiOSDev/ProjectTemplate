@@ -360,13 +360,15 @@ if [ "$VERBOSE" == "1" ]; then
     swift test --enable-code-coverage "${VERBOSE_FLAGS[@]}"
     checkresult $? "'Test' step of 'swift-package.yml' workflow failed."
 else
-    LOG="$(createlogfile "build-documentation")"
-
-    #
+    LOG="$(createlogfile "build-swiftpackage")"
 
     echo -e "$("$SCRIPTS_DIR/printformat.sh" "foreground:blue" "***") Building Swift Package from $("$SCRIPTS_DIR/printformat.sh" "bold" "Package.swift")"
     swift build > "$LOG" 2>&1
     checkresult $? "$(errormessage "'Build' step of 'swift-package.yml' workflow failed." "$LOG")"
+
+    #
+
+    LOG="$(createlogfile "test-swiftpackage")"
 
     echo -e "$("$SCRIPTS_DIR/printformat.sh" "foreground:blue" "***") Testing Swift Package from $("$SCRIPTS_DIR/printformat.sh" "bold" "Package.swift")"
     swift test --enable-code-coverage > "$LOG" 2>&1
