@@ -28,7 +28,7 @@ jobs:
 
     - name: Build Documentation
       run: |
-        xcodebuild docbuild -project "<#TemplateProject#>.xcodeproj" -scheme "<#TemplateProject#>" -destination "generic/platform=iOS" 2>&1 | tee "$LOGSDIR/build.log"
+        xcodebuild docbuild -project "<#TemplateProject#>.xcodeproj" -scheme "<#TemplateProject#>" -destination "generic/platform=iOS" SKIP_SWIFTLINT=YES 2>&1 | tee "$LOGSDIR/build.log"
 
     - name: Upload Logs
       uses: actions/upload-artifact@v2

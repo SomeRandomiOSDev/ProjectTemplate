@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 #
 # xcframework.sh
+# Copyright (c) <#TemplateYear#> <#TemplateName#>. All rights reserved.
+# Originated from https://github.com/SomeRandomiOSDev/ProjectTemplate
+#
 # Usage example: ./xcframework.sh --output <some_path>/<name>.xcframework
 
 # Set Script Variables

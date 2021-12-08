@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 #
-# https://gist.github.com/SomeRandomiOSDev/798406a4a15f6b5d78b010599865c04f
-#
 # printformat.sh
+# Copyright (c) <#TemplateYear#> <#TemplateName#>. All rights reserved.
+# Originated from https://github.com/SomeRandomiOSDev/ProjectTemplate
+#
 # Usage example: ./formatstring.sh "forground:red;bold" "Hello, World"
+#
+# https://gist.github.com/SomeRandomiOSDev/798406a4a15f6b5d78b010599865c04f
 
 # Help
 

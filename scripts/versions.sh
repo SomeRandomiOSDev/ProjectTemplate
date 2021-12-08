@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 #
 # versions.sh
+# Copyright (c) <#TemplateYear#> <#TemplateName#>. All rights reserved.
+# Originated from https://github.com/SomeRandomiOSDev/ProjectTemplate
+#
 # Usage example: ./versions.sh "1.4.15" "1.7.0"
 
 # Copied & adapted from: https://stackoverflow.com/questions/4023830/how-to-compare-two-strings-in-dot-separated-version-format-in-bash#answer-4025065

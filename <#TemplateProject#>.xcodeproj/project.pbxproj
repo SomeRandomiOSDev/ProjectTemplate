@@ -483,6 +483,10 @@
 				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1310;
 				ORGANIZATIONNAME = <#TemplateUsername#>;
+                ProjectGenerationInfo = {
+                    Description = "Xcode Project generated using SomeRandomiOSDev/ProjectTemplate";
+                    URL = "https://github.com/SomeRandomiOSDev/ProjectTemplate";
+                };
 				TargetAttributes = {
 					DD86D53C23D11B3E0046E63E = {
 						CreatedOnToolsVersion = 13.1;

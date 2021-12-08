@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 #
 # config.sh
+# Copyright (c) <#TemplateYear#> <#TemplateName#>. All rights reserved.
+# Originated from https://github.com/SomeRandomiOSDev/ProjectTemplate
+#
 # Usage example: ./config.sh --verbose project_name
 
 # Set Script Variables

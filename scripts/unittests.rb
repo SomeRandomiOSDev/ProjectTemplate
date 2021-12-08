@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
+#
+# Copyright (c) <#TemplateYear#> <#TemplateName#>. All rights reserved.
+# Originated from https://github.com/SomeRandomiOSDev/ProjectTemplate
 
 # Imports
 

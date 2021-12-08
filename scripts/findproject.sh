@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 #
-# xcframework.sh
+# findproject.sh
+# Copyright (c) <#TemplateYear#> <#TemplateName#>. All rights reserved.
+# Originated from https://github.com/SomeRandomiOSDev/ProjectTemplate
+#
 # Usage example: ./findproject.sh --project-name <project_name>
 
 # Set Script Variables

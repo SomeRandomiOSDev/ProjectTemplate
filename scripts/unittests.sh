@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 #
 # unittests.sh
+# Copyright (c) <#TemplateYear#> <#TemplateName#>. All rights reserved.
+# Originated from https://github.com/SomeRandomiOSDev/ProjectTemplate
+#
 # Usage example: ./unittests.sh [--no-clean | --no-clean-on-fail]
 
 # Set Script Variables
