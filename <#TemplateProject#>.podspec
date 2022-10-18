@@ -12,10 +12,10 @@ Pod::Spec.new do |s|
   s.author       = { "<#TemplateName#>" => "<#TemplateEmail#>" }
   s.source       = { :git => "https://github.com/<#TemplateUsername#>/<#TemplateProject#>.git", :tag => s.version.to_s }
 
-  s.ios.deployment_target     = '9.0'
+  s.ios.deployment_target     = '11.0'
   s.macos.deployment_target   = '10.10'
-  s.tvos.deployment_target    = '9.0'
-  s.watchos.deployment_target = '2.0'
+  s.tvos.deployment_target    = '11.0'
+  s.watchos.deployment_target = '4.0'
 
   s.source_files      = 'Sources/<#TemplateProject#>/*.swift'
   s.swift_versions    = ['5.0']
